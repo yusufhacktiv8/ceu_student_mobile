@@ -28,7 +28,7 @@ class _CourseSummaryChartState extends State<CourseSummaryChart> {
       ),
     ];
     return Container(
-      height: 270.0,
+      height: 230.0,
       child: Row(
         children: <Widget>[
           AnimatedCircularChart(

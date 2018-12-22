@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:badge/badge.dart';
 
 class CourseList extends StatefulWidget {
   @override
@@ -6,7 +7,7 @@ class CourseList extends StatefulWidget {
 }
 
 const List<String> items = const<String>[
-'Course 1', 'Course 2', 'Course 3'
+'Kardiologi', 'Interna', 'Jiwa'
 ];
 
 class _CourseListState extends State<CourseList> {
@@ -20,11 +21,29 @@ class _CourseListState extends State<CourseList> {
         // convert each item into a Widget based on the type of item it is.
         itemBuilder: (context, index) {
           final item = items[index];
-          return ListTile(
-            title: Text(
-              item,
-              style: Theme.of(context).textTheme.headline,
-            ),
+          return Column(
+            children: <Widget>[
+              ListTile(
+                title: Text(
+                  item,
+                  style: TextStyle(fontSize: 18.0),
+                ),
+                subtitle: Text("Prerequisite for level 1"),
+                leading: Badge.before(
+                  value: "  JIW  ",
+                  positionTop: 5,
+                  child: Text(""),
+                ),
+                trailing: Badge.before(
+                  textStyle: TextStyle(fontSize: 2.0),
+                  spacing: 5,
+                  color: Colors.green,
+                  value: " ",
+                  child: Text("Completed"),
+                ),
+              ),
+              Divider()
+            ],
           );
         },
       ));

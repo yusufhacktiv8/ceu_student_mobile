@@ -18,6 +18,7 @@ class DashboardPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             CourseSummaryChart(),
+            Divider(),
             CourseList(),
           ],
         ),
