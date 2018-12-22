@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:badge/badge.dart';
+import './../course/CoursePage.dart';
 
 class CourseList extends StatefulWidget {
   @override
@@ -24,6 +25,12 @@ class _CourseListState extends State<CourseList> {
           return Column(
             children: <Widget>[
               ListTile(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => CoursePage()),
+                  );
+                },
                 title: Text(
                   item,
                   style: TextStyle(fontSize: 18.0),

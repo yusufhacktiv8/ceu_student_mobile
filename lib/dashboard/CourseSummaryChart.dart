@@ -28,7 +28,7 @@ class _CourseSummaryChartState extends State<CourseSummaryChart> {
       ),
     ];
     return Container(
-      height: 230.0,
+      height: 200.0,
       child: Row(
         children: <Widget>[
           AnimatedCircularChart(
@@ -36,7 +36,7 @@ class _CourseSummaryChartState extends State<CourseSummaryChart> {
             size: const Size(220.0, 220.0),
             initialChartData: data,
             chartType: CircularChartType.Radial,
-            holeRadius: 50.0,
+            holeRadius: 55.0,
             holeLabel: "7 Courses",
             labelStyle: TextStyle(fontSize: 20.0, color: Colors.black),
           ),
