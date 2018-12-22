@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ceu_student/course/CoursePage.dart';
 
 class CourseList extends StatefulWidget {
   @override
@@ -25,6 +26,12 @@ class _CourseListState extends State<CourseList> {
               item,
               style: Theme.of(context).textTheme.headline,
             ),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => CoursePage()),
+              );
+            },
           );
         },
       ));
