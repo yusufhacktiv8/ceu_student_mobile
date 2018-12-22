@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_circular_chart/flutter_circular_chart.dart';
+import './CourseSummaryChartLegend.dart';
 
 class  CourseSummaryChart extends StatefulWidget {
   @override
@@ -28,14 +29,19 @@ class _CourseSummaryChartState extends State<CourseSummaryChart> {
     ];
     return Container(
       height: 270.0,
-      child: AnimatedCircularChart(
-        key: _chartKey,
-        size: const Size(250.0, 300.0),
-        initialChartData: data,
-        chartType: CircularChartType.Radial,
-        holeRadius: 50.0,
-        holeLabel: "123",
-        labelStyle: TextStyle(fontSize: 25.0, color: Colors.black),
+      child: Row(
+        children: <Widget>[
+          AnimatedCircularChart(
+            key: _chartKey,
+            size: const Size(220.0, 220.0),
+            initialChartData: data,
+            chartType: CircularChartType.Radial,
+            holeRadius: 30.0,
+            holeLabel: "7 Courses",
+            labelStyle: TextStyle(fontSize: 20.0, color: Colors.black),
+          ),
+          CourseSummaryChartLegend(),
+        ],
       ),
     );
   }
