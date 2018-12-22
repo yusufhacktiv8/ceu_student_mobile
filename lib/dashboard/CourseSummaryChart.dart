@@ -27,9 +27,10 @@ class _CourseSummaryChartState extends State<CourseSummaryChart> {
       ),
     ];
     return Container(
+      height: 270.0,
       child: AnimatedCircularChart(
         key: _chartKey,
-        size: const Size(300.0, 300.0),
+        size: const Size(250.0, 300.0),
         initialChartData: data,
         chartType: CircularChartType.Radial,
         holeRadius: 50.0,

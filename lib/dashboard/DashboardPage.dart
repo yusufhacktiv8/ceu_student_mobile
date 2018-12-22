@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import './CourseSummaryChart.dart';
+import './CourseList.dart';
 
 class DashboardPage extends StatelessWidget {
   @override
@@ -17,6 +18,7 @@ class DashboardPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             CourseSummaryChart(),
+            CourseList(),
           ],
         ),
       ),
