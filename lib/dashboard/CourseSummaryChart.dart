@@ -36,7 +36,7 @@ class _CourseSummaryChartState extends State<CourseSummaryChart> {
             size: const Size(220.0, 220.0),
             initialChartData: data,
             chartType: CircularChartType.Radial,
-            holeRadius: 30.0,
+            holeRadius: 50.0,
             holeLabel: "7 Courses",
             labelStyle: TextStyle(fontSize: 20.0, color: Colors.black),
           ),
