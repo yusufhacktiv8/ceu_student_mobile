@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import './CourseSummaryChart.dart';
 import './CourseList.dart';
-import './../course/CoursePage.dart';
+import './CourseLevelButton.dart';
 
 class DashboardPage extends StatelessWidget {
   @override
@@ -16,6 +16,17 @@ class DashboardPage extends StatelessWidget {
           child: new Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
+              Container(
+                padding: EdgeInsets.all(15.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    CourseLevelButton(),
+                    Padding(padding: EdgeInsets.all(10.0),),
+                    CourseLevelButton(),
+                  ],
+                ),
+              ),
               CourseSummaryChart(),
               Divider(),
               CourseList(),
@@ -23,6 +34,7 @@ class DashboardPage extends StatelessWidget {
           ),
         ),
         bottomNavigationBar: new BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
           currentIndex: 1,
 //          onTap: (int index) {
 //            setState(() {
@@ -36,7 +48,11 @@ class DashboardPage extends StatelessWidget {
             ),
             new BottomNavigationBarItem(
               icon: new Icon(Icons.collections),
-              title: new Text('Courses'),
+              title: new Text('Scores'),
+            ),
+            new BottomNavigationBarItem(
+              icon: new Icon(Icons.event),
+              title: new Text('Schedules'),
             ),
             new BottomNavigationBarItem(
               icon: new Icon(Icons.account_circle),

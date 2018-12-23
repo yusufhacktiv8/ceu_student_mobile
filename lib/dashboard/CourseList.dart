@@ -35,7 +35,7 @@ class _CourseListState extends State<CourseList> {
                   item,
                   style: TextStyle(fontSize: 18.0),
                 ),
-                subtitle: Text("Prerequisite for level 1"),
+//                subtitle: Text("Prerequisite for level 1"),
                 leading: Badge.before(
                   value: "  JIW  ",
                   positionTop: 5,
