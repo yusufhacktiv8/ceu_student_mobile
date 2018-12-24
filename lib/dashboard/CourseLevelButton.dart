@@ -27,7 +27,7 @@ class _CourseLevelButtonState extends State<CourseLevelButton> {
     return InkWell(
 //        radius: 50.0,
       child: Container(
-        padding: EdgeInsets.only(left: 35.0, right: 35.0, top: 15.0, bottom: 15.0),
+        padding: EdgeInsets.only(left: 35.0, right: 35.0, top: 10.0, bottom: 10.0),
         decoration: decoration,
         child: Column(
           children: <Widget>[

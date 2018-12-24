@@ -17,7 +17,7 @@ class DashboardPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Container(
-                padding: EdgeInsets.all(15.0),
+                padding: EdgeInsets.only(left: 15.0, right: 15.0, top: 15.0, bottom: 5.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
@@ -27,9 +27,13 @@ class DashboardPage extends StatelessWidget {
                   ],
                 ),
               ),
-              CourseSummaryChart(),
-              Divider(),
-              CourseList(),
+              Expanded(
+                child: ListView(children: <Widget>[
+                  CourseSummaryChart(),
+                  Divider(),
+                  CourseList(),
+                ],),
+              ),
             ],
           ),
         ),
