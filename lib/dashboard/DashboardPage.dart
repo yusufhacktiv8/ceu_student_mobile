@@ -21,9 +21,9 @@ class DashboardPage extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    CourseLevelButton(),
+                    CourseLevelButton(level: 1, selected: true,),
                     Padding(padding: EdgeInsets.all(10.0),),
-                    CourseLevelButton(),
+                    CourseLevelButton(level: 2, selected: false,),
                   ],
                 ),
               ),
