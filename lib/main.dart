@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_circular_chart/flutter_circular_chart.dart';
-import 'dashboard/DashboardPage.dart';
+import 'dashboard/dashboard_page.dart';
 
 void main() => runApp(new MyApp());
 
