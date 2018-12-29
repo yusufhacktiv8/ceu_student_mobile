@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_circular_chart/flutter_circular_chart.dart';
 import './course_summary.dart';
+import './sgl.dart';
 
 final GlobalKey<AnimatedCircularChartState> _chartKey = new GlobalKey<AnimatedCircularChartState>();
 
@@ -14,7 +15,7 @@ class CoursePage extends StatefulWidget {
 }
 
 const List<String> tabNames = const<String>[
-  'foo', 'bar', 'baz', 'quox', 'quuz', 'corge', 'grault', 'garply', 'waldo'
+  'SGL', 'Schedules', 'Scores', 'Portofolios', 'Seminars', 'Problems'
 ];
 
 class _CoursePageState extends State<CoursePage> {
@@ -35,9 +36,11 @@ class _CoursePageState extends State<CoursePage> {
 //                child: new Text('First screen, ${tabNames[index]}'),
                 child: CourseSummary(),
               );
-              case 1: return new Center(
-                child: new Text('Second screen'),
-              );
+              case 1:
+                switch(index) {
+                  case 0: return Sgl();
+                  default: return Sgl();
+                }
             }
           }),
         ),

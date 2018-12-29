@@ -16,30 +16,35 @@ class _CourseListState extends State<CourseList> {
   Widget build(BuildContext context) {
     return Column(
       children: items.map((item) {
-        return ListTile(
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => CoursePage(title: "Kardiologi",)),
-            );
-          },
-          title: Text(
-            item,
-            style: TextStyle(fontSize: 18.0),
-          ),
+        return Column(
+          children: <Widget>[
+            ListTile(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => CoursePage(title: "Kardiologi",)),
+                );
+              },
+              title: Text(
+                item,
+                style: TextStyle(fontSize: 18.0),
+              ),
 //                subtitle: Text("Prerequisite for level 1"),
-          leading: Badge.before(
-            value: "  JIW  ",
-            positionTop: 5,
-            child: Text(""),
-          ),
-          trailing: Badge.before(
-            textStyle: TextStyle(fontSize: 2.0),
-            spacing: 5,
-            color: Colors.green,
-            value: " ",
-            child: Text("Completed"),
-          ),
+              leading: Badge.before(
+                value: "  JIW  ",
+                positionTop: 5,
+                child: Text(""),
+              ),
+              trailing: Badge.before(
+                textStyle: TextStyle(fontSize: 2.0),
+                spacing: 5,
+                color: Colors.green,
+                value: " ",
+                child: Text("Completed"),
+              ),
+            ),
+            Divider(),
+          ],
         );
       }).toList(),
     );
