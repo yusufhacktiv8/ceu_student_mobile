@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_circular_chart/flutter_circular_chart.dart';
+import './course_summary.dart';
 
 final GlobalKey<AnimatedCircularChartState> _chartKey = new GlobalKey<AnimatedCircularChartState>();
 
@@ -31,7 +32,8 @@ class _CoursePageState extends State<CoursePage> {
           children: new List<Widget>.generate(tabNames.length, (int index) {
             switch (_screen) {
               case 0: return new Center(
-                child: new Text('First screen, ${tabNames[index]}'),
+//                child: new Text('First screen, ${tabNames[index]}'),
+                child: CourseSummary(),
               );
               case 1: return new Center(
                 child: new Text('Second screen'),
