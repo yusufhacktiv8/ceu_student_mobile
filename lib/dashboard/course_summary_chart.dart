@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_circular_chart/flutter_circular_chart.dart';
-import './CourseSummaryChartLegend.dart';
+import './course_summary_chart_legend.dart';
 
 class  CourseSummaryChart extends StatefulWidget {
   @override

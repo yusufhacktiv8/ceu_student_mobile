@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:badge/badge.dart';
-import './../course/CoursePage.dart';
+import './../course/course_page.dart';
 
 class CourseList extends StatefulWidget {
   @override

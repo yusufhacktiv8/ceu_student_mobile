@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import './CourseSummaryChart.dart';
-import './CourseList.dart';
-import './CourseLevelButton.dart';
+import './course_summary_chart.dart';
+import './course_list.dart';
+import './course_level_button.dart';
 
 class DashboardPage extends StatelessWidget {
   @override
