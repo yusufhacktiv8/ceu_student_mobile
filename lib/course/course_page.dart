@@ -3,6 +3,7 @@ import 'package:flutter_circular_chart/flutter_circular_chart.dart';
 import './course_summary.dart';
 import './sgl.dart';
 import './schedules.dart';
+import './scores.dart';
 
 final GlobalKey<AnimatedCircularChartState> _chartKey = new GlobalKey<AnimatedCircularChartState>();
 
@@ -41,6 +42,7 @@ class _CoursePageState extends State<CoursePage> {
                 switch(index) {
                   case 0: return Sgl();
                   case 1: return Schedules();
+                  case 2: return Scores();
                   default: return Sgl();
                 }
             }
