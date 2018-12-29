@@ -21,22 +21,11 @@ class _CoursePageState extends State<CoursePage> {
 
   @override
   Widget build(BuildContext context) {
-    List<CircularStackEntry> data = <CircularStackEntry>[
-      new CircularStackEntry(
-        <CircularSegmentEntry>[
-          new CircularSegmentEntry(500.0, Colors.red[200], rankKey: 'Q1'),
-          new CircularSegmentEntry(1000.0, Colors.green[200], rankKey: 'Q2'),
-          new CircularSegmentEntry(2000.0, Colors.blue[200], rankKey: 'Q3'),
-          new CircularSegmentEntry(1000.0, Colors.yellow[200], rankKey: 'Q4'),
-        ],
-        rankKey: 'Quarterly Profits',
-      ),
-    ];
     return DefaultTabController(
       length: tabNames.length,
       child: new Scaffold(
         appBar: new AppBar(
-          title: new Text('Navigation example'),
+          title: new Text(widget.title),
         ),
         body: new TabBarView(
           children: new List<Widget>.generate(tabNames.length, (int index) {
@@ -55,7 +44,8 @@ class _CoursePageState extends State<CoursePage> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             new AnimatedCrossFade(
-              firstChild: new Material(
+              firstChild: new Container(),
+              secondChild: new Material(
                 color: Theme
                     .of(context)
                     .primaryColor,
@@ -66,7 +56,6 @@ class _CoursePageState extends State<CoursePage> {
                   }),
                 ),
               ),
-              secondChild: new Container(),
               crossFadeState: _screen == 0
                   ? CrossFadeState.showFirst
                   : CrossFadeState.showSecond,
@@ -81,12 +70,12 @@ class _CoursePageState extends State<CoursePage> {
               },
               items: [
                 new BottomNavigationBarItem(
-                  icon: new Icon(Icons.airplanemode_active),
-                  title: new Text('Airplane'),
+                  icon: new Icon(Icons.dehaze),
+                  title: new Text('Summary'),
                 ),
                 new BottomNavigationBarItem(
-                  icon: new Icon(Icons.motorcycle),
-                  title: new Text('Motorcycle'),
+                  icon: new Icon(Icons.assignment),
+                  title: new Text('Details'),
                 ),
               ],
             ),

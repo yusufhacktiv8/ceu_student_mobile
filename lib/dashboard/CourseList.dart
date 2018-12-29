@@ -20,7 +20,7 @@ class _CourseListState extends State<CourseList> {
           onTap: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => CoursePage()),
+              MaterialPageRoute(builder: (context) => CoursePage(title: "Kardiologi",)),
             );
           },
           title: Text(
