@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:badge/badge.dart';
-import './../course/course_page.dart';
+import './../score/score_page.dart';
 
 class CourseList extends StatefulWidget {
   @override
@@ -22,7 +22,8 @@ class _CourseListState extends State<CourseList> {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => CoursePage(title: "Kardiologi",)),
+//                  MaterialPageRoute(builder: (context) => CoursePage(title: "Kardiologi",)),
+                  MaterialPageRoute(builder: (context) => ScorePage()),
                 );
               },
               title: Text(
