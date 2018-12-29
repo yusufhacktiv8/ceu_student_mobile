@@ -5,6 +5,7 @@ import './sgl.dart';
 import './schedules.dart';
 import './scores.dart';
 import './portofolios.dart';
+import './seminars.dart';
 
 final GlobalKey<AnimatedCircularChartState> _chartKey = new GlobalKey<AnimatedCircularChartState>();
 
@@ -45,6 +46,7 @@ class _CoursePageState extends State<CoursePage> {
                   case 1: return Schedules();
                   case 2: return Scores();
                   case 3: return Portofolios();
+                  case 4: return Seminars();
                   default: return Sgl();
                 }
             }
