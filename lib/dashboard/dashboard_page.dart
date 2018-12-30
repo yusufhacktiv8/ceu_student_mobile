@@ -4,13 +4,71 @@ import './course_list.dart';
 import './course_level_button.dart';
 
 class DashboardPage extends StatelessWidget {
+
+  static final List<Choice> choices = const <Choice>[
+    const Choice(title: 'Change Password', icon: Icons.directions_bike),
+    const Choice(title: 'Logout', icon: Icons.directions_car),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: new AppBar(
           // Here we take the value from the MyHomePage object that was created by
           // the App.build method, and use it to set our appbar title.
-          title: new Text("Dashboard"),
+          centerTitle: false,
+          elevation: 2.0,
+          backgroundColor: Colors.white,
+          title: Text('Dashboard',
+              style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.w700,
+                  fontSize: 26.0)),
+            actions: <Widget>[
+              PopupMenuButton<Choice>(
+//                onSelected: _select,
+                child: Container(
+                  margin: EdgeInsets.only(right: 8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                    Text("Yusuf",
+                          style: TextStyle(
+                              color: Colors.blue,
+                              fontWeight: FontWeight.w700,
+                              fontSize: 14.0)),
+//                      FutureBuilder (
+//                          future: _getUserName(),
+//                          builder: (BuildContext context, AsyncSnapshot snapshot) {
+//                            if (snapshot.hasData) {
+//                              return Text(snapshot.data,
+//                                  style: TextStyle(
+//                                      color: Colors.blue,
+//                                      fontWeight: FontWeight.w700,
+//                                      fontSize: 14.0));
+//                            } else {
+//                              return Text('-',
+//                                  style: TextStyle(
+//                                      color: Colors.blue,
+//                                      fontWeight: FontWeight.w700,
+//                                      fontSize: 14.0));
+//                            }
+//                          }
+//                      ),
+                      Icon(Icons.arrow_drop_down, color: Colors.black54)
+                    ],
+                  ),
+                ),
+                itemBuilder: (BuildContext context) {
+                  return choices.map((Choice choice) {
+                    return PopupMenuItem<Choice>(
+                      value: choice,
+                      child: Text(choice.title),
+                    );
+                  }).toList();
+                },
+              ),
+            ]
         ),
         body: Center(
           child: new Column(
@@ -79,4 +137,11 @@ class DashboardPage extends StatelessWidget {
 //        ),
 //      );
   }
+}
+
+class Choice {
+  const Choice({this.title, this.icon});
+
+  final String title;
+  final IconData icon;
 }
