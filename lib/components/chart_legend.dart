@@ -4,25 +4,29 @@ class ChartLegend extends StatelessWidget {
 
   final count;
   final description;
+  final color;
 
-  ChartLegend({Key key, @required this.count, @required this.description}) : super(key: key);
+  ChartLegend({Key key,
+    @required this.count,
+    @required this.description,
+    @required this.color
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: <Widget>[
-        Container(color: Colors.grey, height: 50, width: 5),
-        Padding(padding: EdgeInsets.all(5),),
-        Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Text('${this.count}', style: TextStyle(fontSize: 27.0, color: Colors.black54)),
-            Text(this.description)
-          ],
+        Container(height: 20, width: 20,
+          child: Center(child: Text('${this.count}', style: TextStyle(fontSize: 18.0, color: Colors.white))),
+          decoration: BoxDecoration(
+              color: this.color,
+              borderRadius: BorderRadius.all(Radius.circular(5.0))
+          ),
         ),
+        Padding(padding: EdgeInsets.all(5),),
+        Text(this.description),
         Padding(padding: EdgeInsets.all(3),),
-        Icon(Icons.arrow_forward_ios, color: Colors.black26,),
+//        Icon(Icons.arrow_forward_ios, color: Colors.black26,),
       ],
     );
   }

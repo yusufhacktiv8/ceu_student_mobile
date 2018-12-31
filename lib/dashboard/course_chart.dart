@@ -29,13 +29,15 @@ class _CourseChartState extends State<CourseChart> {
       ),
     ];
     return Container(
-      height: 250.0,
+      height: 200.0,
       color: Colors.white,
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           AnimatedCircularChart(
             key: _chartKey,
-            size: const Size(230.0, 230.0),
+            size: const Size(200.0, 200.0),
             initialChartData: data,
             chartType: CircularChartType.Radial,
             holeRadius: 60.0,

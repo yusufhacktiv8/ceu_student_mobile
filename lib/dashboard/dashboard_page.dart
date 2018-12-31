@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../components/header.dart';
 import './course_chart.dart';
 import './course_list.dart';
-import './course_level_button.dart';
+import '../components/course_level_button.dart';
 
 class DashboardPage extends StatelessWidget {
 
@@ -19,22 +19,29 @@ class DashboardPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Container(color: Color(0xFFF5F5F5), height: 10,),
-//              Container(
-//                padding: EdgeInsets.only(left: 15.0, right: 15.0, top: 15.0, bottom: 5.0),
-//                child: Row(
-//                  mainAxisAlignment: MainAxisAlignment.center,
-//                  children: <Widget>[
-//                    CourseLevelButton(level: 1, selected: true,),
-//                    Padding(padding: EdgeInsets.all(10.0),),
-//                    CourseLevelButton(level: 2, selected: false,),
-//                  ],
-//                ),
-//              ),
               Expanded(
                 child: ListView(children: <Widget>[
 //                  CourseSummaryChart(),
+                Container(
+                  padding: EdgeInsets.only(left: 15, top: 10),
+                  color: Colors.white,
+                  child: Row(
+                    children: <Widget>[
+                      Text("Course Chart", style: TextStyle(fontSize: 17.0, fontWeight: FontWeight.bold, color: Colors.black87),)
+                    ],
+                  ),
+                ),
                   CourseChart(),
-                  Divider(),
+//                  Container(
+//                    color: Colors.white,
+//                    child: Row(
+//                      mainAxisAlignment: MainAxisAlignment.center,
+//                      children: <Widget>[
+//                        CourseLevelButton(),
+//                      ],
+//                    ),
+//                  ),
+                  Container(color: Color(0xFFF5F5F5), height: 10,),
                   CourseList(),
                 ],),
               ),
