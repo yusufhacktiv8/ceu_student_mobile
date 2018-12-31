@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../components/header.dart';
 import './course_summary_chart.dart';
 import './course_list.dart';
 import './course_level_button.dart';
@@ -12,64 +13,7 @@ class DashboardPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: new AppBar(
-          // Here we take the value from the MyHomePage object that was created by
-          // the App.build method, and use it to set our appbar title.
-          centerTitle: false,
-          elevation: 2.0,
-          backgroundColor: Colors.white,
-          title: Text('Dashboard',
-              style: TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.w700,
-                  fontSize: 26.0)),
-            actions: <Widget>[
-              PopupMenuButton<Choice>(
-//                onSelected: _select,
-                child: Container(
-                  margin: EdgeInsets.only(right: 8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                    Text("Yusuf",
-                          style: TextStyle(
-                              color: Colors.blue,
-                              fontWeight: FontWeight.w700,
-                              fontSize: 14.0)),
-//                      FutureBuilder (
-//                          future: _getUserName(),
-//                          builder: (BuildContext context, AsyncSnapshot snapshot) {
-//                            if (snapshot.hasData) {
-//                              return Text(snapshot.data,
-//                                  style: TextStyle(
-//                                      color: Colors.blue,
-//                                      fontWeight: FontWeight.w700,
-//                                      fontSize: 14.0));
-//                            } else {
-//                              return Text('-',
-//                                  style: TextStyle(
-//                                      color: Colors.blue,
-//                                      fontWeight: FontWeight.w700,
-//                                      fontSize: 14.0));
-//                            }
-//                          }
-//                      ),
-                      Icon(Icons.arrow_drop_down, color: Colors.black54)
-                    ],
-                  ),
-                ),
-                itemBuilder: (BuildContext context) {
-                  return choices.map((Choice choice) {
-                    return PopupMenuItem<Choice>(
-                      value: choice,
-                      child: Text(choice.title),
-                    );
-                  }).toList();
-                },
-              ),
-            ]
-        ),
+        appBar: Header(),
         body: Center(
           child: new Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -137,11 +81,4 @@ class DashboardPage extends StatelessWidget {
 //        ),
 //      );
   }
-}
-
-class Choice {
-  const Choice({this.title, this.icon});
-
-  final String title;
-  final IconData icon;
 }

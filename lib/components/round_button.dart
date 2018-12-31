@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class RoundButton extends StatelessWidget {
 
-  var label;
+  final label;
 
   RoundButton({Key key, @required this.label}) : super(key: key);
 
