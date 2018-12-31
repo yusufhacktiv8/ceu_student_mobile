@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_circular_chart/flutter_circular_chart.dart';
 //import 'security/LoginScreen.dart';
 import 'dashboard/dashboard_page.dart';
+import 'security/login_page.dart';
 
 void main() => runApp(new MyApp());
 
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
 //      home: new LoginScreen(),
-      home: new DashboardPage(),
+      home: new LoginPage(),
     );
   }
 }
