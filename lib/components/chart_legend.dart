@@ -17,7 +17,7 @@ class ChartLegend extends StatelessWidget {
     return Row(
       children: <Widget>[
         Container(height: 20, width: 20,
-          child: Center(child: Text('${this.count}', style: TextStyle(fontSize: 18.0, color: Colors.white))),
+          child: Center(child: Text('${this.count}', style: TextStyle(fontSize: 17.0, color: Colors.white, fontWeight: FontWeight.normal))),
           decoration: BoxDecoration(
               color: this.color,
               borderRadius: BorderRadius.all(Radius.circular(5.0))
