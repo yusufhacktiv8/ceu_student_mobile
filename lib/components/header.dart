@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class Header extends AppBar {
 
   static final List<Choice> choices = const <Choice>[
-    const Choice(title: 'Change Password', icon: Icons.directions_bike),
+    const Choice(title: 'Profile', icon: Icons.directions_bike),
     const Choice(title: 'Logout', icon: Icons.directions_car),
   ];
 
@@ -15,6 +15,7 @@ class Header extends AppBar {
             style: TextStyle(
                 color: Colors.black)),
       backgroundColor: Colors.white,
+      elevation: 0.0,
       actions: <Widget>[
           PopupMenuButton<Choice>(
 //                onSelected: _select,

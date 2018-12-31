@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:badge/badge.dart';
+import '../components/chart_legend.dart';
 
 class CourseSummaryChartLegend extends StatelessWidget {
   @override
@@ -11,13 +12,14 @@ class CourseSummaryChartLegend extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            new Badge.before(
-              color: Colors.grey,
-              textStyle: TextStyle(fontSize: 17.0, color: Colors.white),
-              spacing: 5.0,
-              value: " 5 ",
-              child: new Text("Scheduled", style: TextStyle(fontSize: 16.0))
-            ),
+            ChartLegend(count: 5, description: "Scheduled",),
+//            new Badge.before(
+//              color: Colors.grey,
+//              textStyle: TextStyle(fontSize: 17.0, color: Colors.white),
+//              spacing: 5.0,
+//              value: " ",
+//              child: new Text("Scheduled", style: TextStyle(fontSize: 16.0))
+//            ),
             new Badge.before(
               color: Colors.blueAccent,
               textStyle: TextStyle(fontSize: 17.0, color: Colors.white),
