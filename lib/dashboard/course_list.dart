@@ -48,7 +48,7 @@ class _CourseListState extends State<CourseList> {
                   spacing: 5,
                   color: Colors.green,
                   value: " ",
-                  child: Text("Completed", style: TextStyle(fontSize: 16),),
+                  child: Text("Completed", style: TextStyle(fontSize: 16, color: Colors.black87),),
                 ),
               ),
               Divider(),

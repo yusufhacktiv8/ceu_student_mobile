@@ -39,7 +39,7 @@ class _CourseChartState extends State<CourseChart> {
           AnimatedCircularChart(
             key: _chartKey,
             edgeStyle: SegmentEdgeStyle.round,
-            size: const Size(170.0, 170.0),
+            size: const Size(175.0, 175.0),
             initialChartData: data,
             chartType: CircularChartType.Radial,
             holeRadius: 39.0,
@@ -47,7 +47,7 @@ class _CourseChartState extends State<CourseChart> {
             labelStyle: TextStyle(fontSize: 40.0, fontWeight: FontWeight.bold, color: Colors.black),
             duration: Duration(seconds: 1),
           ),
-          Padding(padding: EdgeInsets.all(8),),
+          Padding(padding: EdgeInsets.all(5),),
           CourseSummaryChartLegend(),
         ],
       ),
