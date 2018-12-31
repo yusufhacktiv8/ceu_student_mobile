@@ -31,7 +31,7 @@ class _CourseListState extends State<CourseList> {
                 title: Text(
                   item,
                   style: TextStyle(
-                      fontSize: 18.0,
+                      fontSize: 17.0,
                       fontWeight: FontWeight.bold,
                     color: Colors.black87
                   ),

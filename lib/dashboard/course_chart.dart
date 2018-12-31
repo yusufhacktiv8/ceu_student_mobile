@@ -29,7 +29,8 @@ class _CourseChartState extends State<CourseChart> {
       ),
     ];
     return Container(
-      height: 190.0,
+      padding: EdgeInsets.only(bottom: 25, top: 10),
+      height: 180.0,
       color: Colors.white,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -38,7 +39,7 @@ class _CourseChartState extends State<CourseChart> {
           AnimatedCircularChart(
             key: _chartKey,
             edgeStyle: SegmentEdgeStyle.round,
-            size: const Size(190.0, 190.0),
+            size: const Size(170.0, 170.0),
             initialChartData: data,
             chartType: CircularChartType.Radial,
             holeRadius: 39.0,
@@ -46,6 +47,7 @@ class _CourseChartState extends State<CourseChart> {
             labelStyle: TextStyle(fontSize: 40.0, fontWeight: FontWeight.bold, color: Colors.black),
             duration: Duration(seconds: 1),
           ),
+          Padding(padding: EdgeInsets.all(8),),
           CourseSummaryChartLegend(),
         ],
       ),

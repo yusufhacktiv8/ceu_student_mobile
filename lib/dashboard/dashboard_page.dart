@@ -45,7 +45,7 @@ class DashboardPage extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: <Widget>[
-                                  Text("Tingkat 1", style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold)),
+                                  Text("Tingkat 1", style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold, fontSize: 16)),
                                   Icon(Icons.arrow_drop_down, color: Colors.black54)
                                 ],
                               ),
