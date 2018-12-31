@@ -32,7 +32,7 @@ class _CourseChartState extends State<CourseChart> {
       height: 190.0,
       color: Colors.white,
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           AnimatedCircularChart(

@@ -11,6 +11,7 @@ class Header extends AppBar {
     Key key,                                                   // named parameter
   }) : super(key: key,
       centerTitle: true,
+      leading: Icon(Icons.chat, color: Colors.blueAccent, size: 30,),
       title: Text('Dashboard',
             style: TextStyle(
                 color: Colors.black)),

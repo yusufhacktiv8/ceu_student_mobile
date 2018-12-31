@@ -23,7 +23,7 @@ class DashboardPage extends StatelessWidget {
                 child: ListView(children: <Widget>[
 //                  CourseSummaryChart(),
                 Container(
-                  padding: EdgeInsets.only(left: 15, top: 10),
+                  padding: EdgeInsets.only(left: 15, top: 10, right: 15),
                   color: Colors.white,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -45,7 +45,8 @@ class DashboardPage extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: <Widget>[
-                                  Text("Tingkat 1", style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold))
+                                  Text("Tingkat 1", style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold)),
+                                  Icon(Icons.arrow_drop_down, color: Colors.black54)
                                 ],
                               ),
                             ),

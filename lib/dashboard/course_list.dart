@@ -30,10 +30,15 @@ class _CourseListState extends State<CourseList> {
                 },
                 title: Text(
                   item,
-                  style: TextStyle(fontSize: 18.0),
+                  style: TextStyle(
+                      fontSize: 18.0,
+                      fontWeight: FontWeight.bold,
+                    color: Colors.black87
+                  ),
                 ),
 //                subtitle: Text("Prerequisite for level 1"),
                 leading: Badge.before(
+                  textStyle: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
                   value: "  JIW  ",
                   positionTop: 5,
                   child: Text(""),
@@ -43,7 +48,7 @@ class _CourseListState extends State<CourseList> {
                   spacing: 5,
                   color: Colors.green,
                   value: " ",
-                  child: Text("Completed"),
+                  child: Text("Completed", style: TextStyle(fontSize: 16),),
                 ),
               ),
               Divider(),

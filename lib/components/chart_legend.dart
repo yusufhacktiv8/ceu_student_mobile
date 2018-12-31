@@ -24,7 +24,7 @@ class ChartLegend extends StatelessWidget {
           ),
         ),
         Padding(padding: EdgeInsets.all(5),),
-        Text(this.description),
+        Text(this.description, style: TextStyle(color: Colors.grey, fontWeight: FontWeight.bold),),
         Padding(padding: EdgeInsets.all(3),),
 //        Icon(Icons.arrow_forward_ios, color: Colors.black26,),
       ],
