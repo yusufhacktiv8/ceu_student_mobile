@@ -20,7 +20,7 @@ class _CourseChartState extends State<CourseChart> {
       new CircularStackEntry(
         <CircularSegmentEntry>[
           new CircularSegmentEntry(500.0, Colors.grey, rankKey: 'Q1'),
-          new CircularSegmentEntry(1000.0, Colors.green, rankKey: 'Q2'),
+          new CircularSegmentEntry(1000.0, Colors.lightGreen, rankKey: 'Q2'),
           new CircularSegmentEntry(1000.0, Colors.blue, rankKey: 'Q3'),
           new CircularSegmentEntry(1000.0, Colors.yellow, rankKey: 'Q4'),
           new CircularSegmentEntry(1000.0, Colors.red, rankKey: 'Q5'),
@@ -29,7 +29,7 @@ class _CourseChartState extends State<CourseChart> {
       ),
     ];
     return Container(
-      height: 200.0,
+      height: 190.0,
       color: Colors.white,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -37,12 +37,13 @@ class _CourseChartState extends State<CourseChart> {
         children: <Widget>[
           AnimatedCircularChart(
             key: _chartKey,
-            size: const Size(200.0, 200.0),
+            edgeStyle: SegmentEdgeStyle.round,
+            size: const Size(190.0, 190.0),
             initialChartData: data,
             chartType: CircularChartType.Radial,
-            holeRadius: 60.0,
-            holeLabel: "7 Courses",
-            labelStyle: TextStyle(fontSize: 20.0, color: Colors.black),
+            holeRadius: 39.0,
+            holeLabel: "7",
+            labelStyle: TextStyle(fontSize: 40.0, fontWeight: FontWeight.bold, color: Colors.black),
             duration: Duration(seconds: 1),
           ),
           CourseSummaryChartLegend(),

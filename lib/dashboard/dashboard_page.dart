@@ -7,8 +7,8 @@ import '../components/course_level_button.dart';
 class DashboardPage extends StatelessWidget {
 
   static final List<Choice> choices = const <Choice>[
-    const Choice(title: 'Change Password', icon: Icons.directions_bike),
-    const Choice(title: 'Logout', icon: Icons.directions_car),
+    const Choice(title: 'Tingkat 1', icon: Icons.directions_bike),
+    const Choice(title: 'Tingkat 2', icon: Icons.directions_car),
   ];
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ class DashboardPage extends StatelessWidget {
           child: new Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Container(color: Color(0xFFF5F5F5), height: 10,),
+              Container(color: Color(0xFFF5F5F5), height: 15,),
               Expanded(
                 child: ListView(children: <Widget>[
 //                  CourseSummaryChart(),
@@ -26,8 +26,40 @@ class DashboardPage extends StatelessWidget {
                   padding: EdgeInsets.only(left: 15, top: 10),
                   color: Colors.white,
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      Text("Course Chart", style: TextStyle(fontSize: 17.0, fontWeight: FontWeight.bold, color: Colors.black87),)
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Text("Chart", style: TextStyle(fontSize: 17.0, fontWeight: FontWeight.bold, color: Colors.black87),),
+                        ],
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: <Widget>[
+                          PopupMenuButton<Choice>(
+                            //                onSelected: _select,
+                            child: Container(
+                              margin: EdgeInsets.only(right: 8.0),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: <Widget>[
+                                  Text("Tingkat 1", style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold))
+                                ],
+                              ),
+                            ),
+                            itemBuilder: (BuildContext context) {
+                              return choices.map((Choice choice) {
+                                return PopupMenuItem<Choice>(
+                                  value: choice,
+                                  child: Text(choice.title, style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold),),
+                                );
+                              }).toList();
+                            },
+                          ),
+                        ],
+                      ),
                     ],
                   ),
                 ),
@@ -41,7 +73,12 @@ class DashboardPage extends StatelessWidget {
 //                      ],
 //                    ),
 //                  ),
-                  Container(color: Color(0xFFF5F5F5), height: 10,),
+                  Container(color: Color(0xFFF5F5F5), height: 15,),
+                  Container(
+                    padding: EdgeInsets.only(left: 15, top: 10),
+                    color: Colors.white,
+                    child: Text("Courses", style: TextStyle(fontSize: 17.0, fontWeight: FontWeight.bold, color: Colors.black87),),
+                  ),
                   CourseList(),
                 ],),
               ),

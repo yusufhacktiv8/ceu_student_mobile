@@ -14,40 +14,43 @@ const List<String> items = const<String>[
 class _CourseListState extends State<CourseList> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: items.map((item) {
-        return Column(
-          children: <Widget>[
-            ListTile(
-              onTap: () {
-                Navigator.push(
-                  context,
+    return Container(
+      color: Colors.white,
+      child: Column(
+        children: items.map((item) {
+          return Column(
+            children: <Widget>[
+              ListTile(
+                onTap: () {
+                  Navigator.push(
+                    context,
 //                  MaterialPageRoute(builder: (context) => CoursePage(title: "Kardiologi",)),
-                  MaterialPageRoute(builder: (context) => ScorePage()),
-                );
-              },
-              title: Text(
-                item,
-                style: TextStyle(fontSize: 18.0),
-              ),
+                    MaterialPageRoute(builder: (context) => ScorePage()),
+                  );
+                },
+                title: Text(
+                  item,
+                  style: TextStyle(fontSize: 18.0),
+                ),
 //                subtitle: Text("Prerequisite for level 1"),
-              leading: Badge.before(
-                value: "  JIW  ",
-                positionTop: 5,
-                child: Text(""),
+                leading: Badge.before(
+                  value: "  JIW  ",
+                  positionTop: 5,
+                  child: Text(""),
+                ),
+                trailing: Badge.before(
+                  textStyle: TextStyle(fontSize: 2.0),
+                  spacing: 5,
+                  color: Colors.green,
+                  value: " ",
+                  child: Text("Completed"),
+                ),
               ),
-              trailing: Badge.before(
-                textStyle: TextStyle(fontSize: 2.0),
-                spacing: 5,
-                color: Colors.green,
-                value: " ",
-                child: Text("Completed"),
-              ),
-            ),
-            Divider(),
-          ],
-        );
-      }).toList(),
+              Divider(),
+            ],
+          );
+        }).toList(),
+      ),
     );
 //    return ListView.builder(
 //      // Let the ListView know how many items it needs to build
