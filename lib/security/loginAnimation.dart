@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
-import 'package:dashboard/pages/dashboard/Dashboard.dart';
+import 'package:ceu_student/dashboard/dashboard_page.dart';
 
 class StaggerAnimation extends StatelessWidget {
   StaggerAnimation({Key key, this.buttonController})
@@ -123,7 +123,7 @@ class StaggerAnimation extends StatelessWidget {
 //        Navigator.pushNamed(context, "/home");
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => Dashboard()),
+          MaterialPageRoute(builder: (context) => DashboardPage()),
         );
       }
     });

@@ -10,7 +10,7 @@ class SignUp extends StatelessWidget {
       ),
       onPressed: null,
       child: new Text(
-        "© Copyright WIKA Rekon - 2018",
+        "© Copyright Clinical Education Unit - 2019",
         textAlign: TextAlign.center,
         overflow: TextOverflow.ellipsis,
         softWrap: true,
