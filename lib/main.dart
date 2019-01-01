@@ -3,8 +3,12 @@ import 'package:flutter_circular_chart/flutter_circular_chart.dart';
 //import 'security/LoginScreen.dart';
 import 'dashboard/dashboard_page.dart';
 import 'security/login_page.dart';
+import 'package:flutter/rendering.dart';
 
-void main() => runApp(new MyApp());
+void main(){
+//  debugPaintSizeEnabled=true;
+  runApp(new MyApp());
+}
 
 final GlobalKey<AnimatedCircularChartState> _chartKey = new GlobalKey<AnimatedCircularChartState>();
 
