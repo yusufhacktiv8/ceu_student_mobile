@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_circular_chart/flutter_circular_chart.dart';
 import './course_summary_chart_legend.dart';
+import '../models/course.dart';
 
-class  CourseChart extends StatefulWidget {
-  @override
-  _CourseChartState createState() => _CourseChartState();
-}
+//class  CourseChart extends StatefulWidget {
+//  @override
+//  _CourseChartState createState() => _CourseChartState();
+//}
 
 const List<String> tabNames = const<String>[
   'foo', 'bar', 'baz', 'quox', 'quuz', 'corge', 'grault', 'garply', 'waldo'
@@ -13,7 +14,14 @@ const List<String> tabNames = const<String>[
 
 final GlobalKey<AnimatedCircularChartState> _chartKey = new GlobalKey<AnimatedCircularChartState>();
 
-class _CourseChartState extends State<CourseChart> {
+class CourseChart extends StatelessWidget {
+
+  final List<Course> courses;
+
+  CourseChart({Key key,
+    @required this.courses,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     List<CircularStackEntry> data = <CircularStackEntry>[
@@ -43,7 +51,7 @@ class _CourseChartState extends State<CourseChart> {
             initialChartData: data,
             chartType: CircularChartType.Radial,
             holeRadius: 41.0,
-            holeLabel: "7",
+            holeLabel: "${courses.length}",
             labelStyle: TextStyle(fontSize: 40.0, fontWeight: FontWeight.bold, color: Colors.black),
             duration: Duration(seconds: 1),
           ),
