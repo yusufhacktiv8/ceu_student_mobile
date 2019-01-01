@@ -61,6 +61,7 @@ class _LoginPageState extends State<LoginPage> {
   //                          this.formValue.password = value;
   //                        }
                       ),
+                      Padding(padding: EdgeInsets.only(bottom: 30),),
                       RoundButton(label: "Sign In", radius: 40.0),
                     ],
                   )),
