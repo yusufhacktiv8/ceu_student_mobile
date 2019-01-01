@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'components/InputFields.dart';
+import '../components/round_button.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -29,7 +30,7 @@ class _LoginPageState extends State<LoginPage> {
                 children: <Widget>[
 //                  Icon(Icons.check_circle, size: 60, color: Colors.blue,),
                   Padding(padding: EdgeInsets.only(bottom: 10),),
-                  Text("Sign in", style: TextStyle(color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),),
+                  Text("CEU", style: TextStyle(color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),),
                   Text("Clinical Education Unit", style: TextStyle(color: Colors.grey)),
                 ],
               ),
@@ -60,6 +61,7 @@ class _LoginPageState extends State<LoginPage> {
   //                          this.formValue.password = value;
   //                        }
                       ),
+                      RoundButton(label: "Sign In", radius: 40.0),
                     ],
                   )),
                 ],

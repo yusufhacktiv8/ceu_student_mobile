@@ -3,8 +3,12 @@ import 'package:flutter/material.dart';
 class RoundButton extends StatelessWidget {
 
   final label;
+  final radius;
 
-  RoundButton({Key key, @required this.label}) : super(key: key);
+  RoundButton({Key key,
+    @required this.label,
+    @required this.radius
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +20,7 @@ class RoundButton extends StatelessWidget {
         decoration: new BoxDecoration(
           color: Colors.blueAccent,
 //          border: new Border.all(color: Colors.white, width: 2.0),
-          borderRadius: new BorderRadius.circular(10.0),
+          borderRadius: new BorderRadius.circular(this.radius),
         ),
         child: new Center(child: new Text(this.label, style: new TextStyle(fontSize: 18.0, color: Colors.white),),),
       ),
