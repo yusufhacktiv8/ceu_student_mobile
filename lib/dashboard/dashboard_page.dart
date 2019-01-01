@@ -33,7 +33,7 @@ class _DashboardPageState extends State<DashboardPage> {
   void initState() {
     super.initState();
 //    findCourses();
-    Future.delayed(const Duration(milliseconds: 2000), () {
+    Future.delayed(const Duration(milliseconds: 500), () {
       _refreshIndicatorKey.currentState?.show();
     });
   }
