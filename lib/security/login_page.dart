@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:io';
 import 'dart:async';
 import 'dart:convert';
-import 'components/InputFields.dart';
+import '../components/input_field.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../components/round_button.dart';
 import '../constant.dart';
@@ -56,7 +56,7 @@ class _LoginPageState extends State<LoginPage> {
                   child: new Column(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: <Widget>[
-                      new InputFieldArea(
+                      new InputField(
                           hint: "Username",
                           obscure: false,
                           icon: Icons.person_outline,
@@ -70,7 +70,7 @@ class _LoginPageState extends State<LoginPage> {
                           },
                       ),
                       Padding(padding: EdgeInsets.only(bottom: 10),),
-                      new InputFieldArea(
+                      new InputField(
                           hint: "Password",
                           obscure: true,
                           icon: Icons.lock_outline,

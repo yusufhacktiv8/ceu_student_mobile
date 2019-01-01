@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 
-class InputFieldArea extends StatelessWidget {
+class InputField extends StatelessWidget {
   final String hint;
   final bool obscure;
   final IconData icon;
   final onSaved;
   final validator;
-  InputFieldArea({this.hint, this.obscure, this.icon, this.onSaved, this.validator});
+  InputField({this.hint, this.obscure, this.icon, this.onSaved, this.validator});
+
   @override
   Widget build(BuildContext context) {
     return (new Container(
