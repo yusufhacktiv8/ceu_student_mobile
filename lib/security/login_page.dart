@@ -36,13 +36,15 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
             Container(
-              height: 70,
+              height: 90,
               child: Column(
                 children: <Widget>[
 //                  Icon(Icons.check_circle, size: 60, color: Colors.blue,),
                   Padding(padding: EdgeInsets.only(bottom: 10),),
                   Text("CEU Student", style: TextStyle(color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),),
+                  Padding(padding: EdgeInsets.only(bottom: 8),),
                   Text("Clinical Education Unit for Student", style: TextStyle(color: Colors.grey)),
+                  Padding(padding: EdgeInsets.only(bottom: 20),),
                 ],
               ),
             ),

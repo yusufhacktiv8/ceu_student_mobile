@@ -1,11 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../components/header.dart';
 import './course_chart.dart';
 import './course_list.dart';
-import '../components/course_level_button.dart';
+import '../security/login_page.dart';
+import '../constant.dart';
 
-class DashboardPage extends StatelessWidget {
+class DashboardPage extends StatefulWidget {
 
+  @override
+  _DashboardPageState createState() => new _DashboardPageState();
+
+}
+
+class _DashboardPageState extends State<DashboardPage> {
+
+  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   static final List<Choice> choices = const <Choice>[
     const Choice(title: 'Tingkat 1', icon: Icons.directions_bike),
     const Choice(title: 'Tingkat 2', icon: Icons.directions_car),
@@ -13,7 +23,9 @@ class DashboardPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: Header(),
+        appBar: Header(onSelect: (title) {
+          logout(title);
+        },),
         body: Center(
           child: new Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -127,5 +139,19 @@ class DashboardPage extends StatelessWidget {
 //          ),
 //        ),
 //      );
+  }
+
+  logout(title) {
+    _setMobileToken('');
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => LoginPage()),
+    );
+  }
+
+  Future<bool> _setMobileToken(String token) async {
+    final SharedPreferences prefs = await _prefs;
+
+    return prefs.setString(MOBILE_TOKEN_KEY, token);
   }
 }

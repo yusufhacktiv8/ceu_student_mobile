@@ -7,8 +7,11 @@ class Header extends AppBar {
     const Choice(title: 'Logout', icon: Icons.directions_car),
   ];
 
+  final onSelect;
+
   Header({
-    Key key,                                                   // named parameter
+    Key key,
+    this.onSelect,// named parameter
   }) : super(key: key,
       centerTitle: true,
       leading: Icon(Icons.chat, color: Colors.blueAccent, size: 30,),
@@ -19,7 +22,9 @@ class Header extends AppBar {
       elevation: 0.0,
       actions: <Widget>[
           PopupMenuButton<Choice>(
-//                onSelected: _select,
+            onSelected: (choice) {
+              onSelect(choice.title);
+            },
             child: Container(
               margin: EdgeInsets.only(right: 8.0),
               child: Row(
