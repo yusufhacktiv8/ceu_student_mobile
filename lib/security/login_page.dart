@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
+import 'dart:io';
+import 'dart:async';
+import 'dart:convert';
 import 'components/InputFields.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../components/round_button.dart';
+import '../constant.dart';
+import '../dashboard/dashboard_page.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -8,6 +14,11 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+
+  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+  final _formKey = GlobalKey<FormState>();
+  final LoginFormValue _formValue = new LoginFormValue();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,8 +41,8 @@ class _LoginPageState extends State<LoginPage> {
                 children: <Widget>[
 //                  Icon(Icons.check_circle, size: 60, color: Colors.blue,),
                   Padding(padding: EdgeInsets.only(bottom: 10),),
-                  Text("CEU", style: TextStyle(color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),),
-                  Text("Clinical Education Unit", style: TextStyle(color: Colors.grey)),
+                  Text("CEU Student", style: TextStyle(color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),),
+                  Text("Clinical Education Unit for Student", style: TextStyle(color: Colors.grey)),
                 ],
               ),
             ),
@@ -41,7 +52,7 @@ class _LoginPageState extends State<LoginPage> {
               child: Column(
                 children: <Widget>[
                 Form(
-//                key: formKey,
+                key: _formKey,
                   child: new Column(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: <Widget>[
@@ -49,20 +60,39 @@ class _LoginPageState extends State<LoginPage> {
                           hint: "Username",
                           obscure: false,
                           icon: Icons.person_outline,
-  //                        onSaved: (String value) {
-  //                          this.formValue.username = value;
-  //                        }
+                          onSaved: (String value) {
+                            this._formValue.username = value;
+                          },
+                          validator: (value) {
+                            if (value.isEmpty) {
+                              return 'Please enter username';
+                            }
+                          },
                       ),
+                      Padding(padding: EdgeInsets.only(bottom: 10),),
                       new InputFieldArea(
                           hint: "Password",
                           obscure: true,
                           icon: Icons.lock_outline,
-  //                        onSaved: (String value) {
-  //                          this.formValue.password = value;
-  //                        }
+                          onSaved: (String value) {
+                            this._formValue.password = value;
+                          },
+                        validator: (value) {
+                          if (value.isEmpty) {
+                            return 'Please enter password';
+                          }
+                        },
                       ),
                       Padding(padding: EdgeInsets.only(bottom: 30),),
-                      RoundButton(label: "Sign In", radius: 40.0),
+                      RoundButton(
+                          label: "Sign In",
+                          radius: 40.0,
+                        onClick: () {
+                          if(_formKey.currentState.validate()) {
+                            login();
+                          }
+                        }
+                      ),
                     ],
                   )),
                 ],
@@ -73,4 +103,70 @@ class _LoginPageState extends State<LoginPage> {
       )
     );
   }
+
+  Future<void> login() async{
+    _formKey.currentState.save();
+    try {
+      var httpClient = new HttpClient();
+      var request = await httpClient.postUrl(Uri.parse('$URL/security/signin'));
+      request.headers.set('content-type', 'application/json');
+      Map map = {
+        'username': _formValue.username,
+        'password': _formValue.password,
+      };
+      request.add(utf8.encode(json.encode(map)));
+      var response = await request.close();
+      if (response.statusCode == HttpStatus.ok) {
+        var dataString = await response.transform(utf8.decoder).join();
+        var data = json.decode(dataString);
+        var token = data["token"];
+        await _setMobileToken(token);
+        _formKey.currentState.reset();
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => DashboardPage()),
+        );
+      } else if (response.statusCode == HttpStatus.forbidden) {
+        _showDialog("Invalid Credentials");
+      } else {
+        _showDialog("Connection Error");
+      }
+    } catch (exception) {
+      _showDialog("Connection Error");
+    }
+  }
+
+  Future<bool> _setMobileToken(String token) async {
+    final SharedPreferences prefs = await _prefs;
+
+    return prefs.setString(MOBILE_TOKEN_KEY, token);
+  }
+
+  void _showDialog(String message) {
+    // flutter defined function
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        // return object of type Dialog
+        return AlertDialog(
+          title: new Text("Login Error"),
+          content: new Text(message),
+          actions: <Widget>[
+            // usually buttons at the bottom of the dialog
+            new FlatButton(
+              child: new Text("Close"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+}
+
+class LoginFormValue {
+  String username = '';
+  String password = '';
 }

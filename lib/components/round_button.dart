@@ -4,16 +4,18 @@ class RoundButton extends StatelessWidget {
 
   final label;
   final radius;
+  final onClick;
 
   RoundButton({Key key,
     @required this.label,
-    @required this.radius
+    @required this.radius,
+    this.onClick,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => print('Button $this.label clicked!'),
+      onTap: onClick,
       child: new Container(
         //width: 100.0,
         height: 50.0,
