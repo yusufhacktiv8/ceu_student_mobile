@@ -1,20 +1,12 @@
+import 'package:ceu_student/events/events.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_circular_chart/flutter_circular_chart.dart';
 import './course_chart_legend.dart';
 import '../models/course.dart';
 
-//class  CourseChart extends StatefulWidget {
-//  @override
-//  _CourseChartState createState() => _CourseChartState();
-//}
-
-const List<String> tabNames = const<String>[
-  'foo', 'bar', 'baz', 'quox', 'quuz', 'corge', 'grault', 'garply', 'waldo'
-];
-
-final GlobalKey<AnimatedCircularChartState> _chartKey = new GlobalKey<AnimatedCircularChartState>();
-
-class CourseChart extends StatelessWidget {
+class  CourseChart extends StatefulWidget {
+  @override
+  _CourseChartState createState() => _CourseChartState();
 
   final List<Course> courses;
 
@@ -22,27 +14,26 @@ class CourseChart extends StatelessWidget {
     @required this.courses,
   }) : super(key: key);
 
+}
+
+final GlobalKey<AnimatedCircularChartState> _chartKey = new GlobalKey<AnimatedCircularChartState>();
+
+class _CourseChartState extends State<CourseChart> {
+
+  List<Course> courses = [];
+
+  @override
+  void initState() {
+    super.initState();
+    this.courses = widget.courses;
+    eventBus.on<CoursesChangedEvent>().listen((event) {
+      this.courses = event.courses;
+      _chartKey.currentState.updateData(getChartData(event.courses));
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-
-    var onGoingCount = courses.where((course) => course.status == 1).length.toDouble();
-    var completedCount = courses.where((course) => course.status == 2).length.toDouble();
-    var scheduledCount = courses.where((course) => course.status == 0).length.toDouble();
-    var problemCount = courses.where((course) => course.status == 3).length.toDouble();
-    var pendingCount = courses.where((course) => course.status == 4).length.toDouble();
-
-    List<CircularStackEntry> data = <CircularStackEntry>[
-      new CircularStackEntry(
-        <CircularSegmentEntry>[
-          new CircularSegmentEntry(scheduledCount.toDouble(), Colors.grey, rankKey: 'Q1'),
-          new CircularSegmentEntry(completedCount.toDouble(), Colors.lightGreen, rankKey: 'Q2'),
-          new CircularSegmentEntry(onGoingCount.toDouble(), Colors.blue, rankKey: 'Q3'),
-          new CircularSegmentEntry(pendingCount.toDouble(), Colors.yellow, rankKey: 'Q4'),
-          new CircularSegmentEntry(problemCount.toDouble(), Colors.red, rankKey: 'Q5'),
-        ],
-//        rankKey: 'Quarterly Profits',
-      ),
-    ];
     return Container(
       padding: EdgeInsets.only(bottom: 15, top: 0),
       height: 200.0,
@@ -55,7 +46,7 @@ class CourseChart extends StatelessWidget {
             key: _chartKey,
             edgeStyle: SegmentEdgeStyle.round,
             size: const Size(200.0, 200.0),
-            initialChartData: data,
+            initialChartData: getChartData(widget.courses),
             chartType: CircularChartType.Radial,
             holeRadius: 41.0,
             holeLabel: "${courses.length}",
@@ -67,5 +58,24 @@ class CourseChart extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  List<CircularStackEntry> getChartData(List<Course> courses) {
+    var onGoingCount = courses.where((course) => course.status == 1).length.toDouble();
+    var completedCount = courses.where((course) => course.status == 2).length.toDouble();
+    var scheduledCount = courses.where((course) => course.status == 0).length.toDouble();
+    var problemCount = courses.where((course) => course.status == 3).length.toDouble();
+    var pendingCount = courses.where((course) => course.status == 4).length.toDouble();
+    return <CircularStackEntry>[
+      new CircularStackEntry(
+        <CircularSegmentEntry>[
+          new CircularSegmentEntry(scheduledCount.toDouble(), Colors.grey, rankKey: 'Q1'),
+          new CircularSegmentEntry(completedCount.toDouble(), Colors.lightGreen, rankKey: 'Q2'),
+          new CircularSegmentEntry(onGoingCount.toDouble(), Colors.blue, rankKey: 'Q3'),
+          new CircularSegmentEntry(pendingCount.toDouble(), Colors.yellow, rankKey: 'Q4'),
+          new CircularSegmentEntry(problemCount.toDouble(), Colors.red, rankKey: 'Q5'),
+        ],
+      ),
+    ];
   }
 }

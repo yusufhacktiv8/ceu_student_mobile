@@ -1,3 +1,4 @@
+import 'package:ceu_student/events/events.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:io';
@@ -169,6 +170,7 @@ class _DashboardPageState extends State<DashboardPage> {
         setState(() {
           this.courses = courses;
         });
+        eventBus.fire(CoursesChangedEvent(courses));
       } else {
         _showError('Error finding courses');
       }
