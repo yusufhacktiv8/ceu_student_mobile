@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_circular_chart/flutter_circular_chart.dart';
-import './course_summary_chart_legend.dart';
+import './course_chart_legend.dart';
 import '../models/course.dart';
 
 //class  CourseChart extends StatefulWidget {
@@ -24,16 +24,23 @@ class CourseChart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    var onGoingCount = courses.where((course) => course.status == 1).length.toDouble();
+    var completedCount = courses.where((course) => course.status == 2).length.toDouble();
+    var scheduledCount = courses.where((course) => course.status == 0).length.toDouble();
+    var problemCount = courses.where((course) => course.status == 3).length.toDouble();
+    var pendingCount = courses.where((course) => course.status == 4).length.toDouble();
+
     List<CircularStackEntry> data = <CircularStackEntry>[
       new CircularStackEntry(
         <CircularSegmentEntry>[
-          new CircularSegmentEntry(500.0, Colors.grey, rankKey: 'Q1'),
-          new CircularSegmentEntry(1000.0, Colors.lightGreen, rankKey: 'Q2'),
-          new CircularSegmentEntry(1000.0, Colors.blue, rankKey: 'Q3'),
-          new CircularSegmentEntry(1000.0, Colors.yellow, rankKey: 'Q4'),
-          new CircularSegmentEntry(1000.0, Colors.red, rankKey: 'Q5'),
+          new CircularSegmentEntry(scheduledCount.toDouble(), Colors.grey, rankKey: 'Q1'),
+          new CircularSegmentEntry(completedCount.toDouble(), Colors.lightGreen, rankKey: 'Q2'),
+          new CircularSegmentEntry(onGoingCount.toDouble(), Colors.blue, rankKey: 'Q3'),
+          new CircularSegmentEntry(pendingCount.toDouble(), Colors.yellow, rankKey: 'Q4'),
+          new CircularSegmentEntry(problemCount.toDouble(), Colors.red, rankKey: 'Q5'),
         ],
-        rankKey: 'Quarterly Profits',
+//        rankKey: 'Quarterly Profits',
       ),
     ];
     return Container(
@@ -56,7 +63,7 @@ class CourseChart extends StatelessWidget {
             duration: Duration(seconds: 1),
           ),
           Padding(padding: EdgeInsets.all(5),),
-          CourseSummaryChartLegend(),
+          CourseChartLegend(courses: courses,),
         ],
       ),
     );
