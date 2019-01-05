@@ -43,7 +43,7 @@ class _DashboardPageState extends State<DashboardPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: Header(onSelect: (title) {
+        appBar: Header(label: 'Dashboard', onSelect: (title) {
           logout(title);
         },),
         body: Center(

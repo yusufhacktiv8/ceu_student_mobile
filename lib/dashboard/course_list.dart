@@ -1,8 +1,9 @@
 import 'package:ceu_student/components/status.dart';
+import 'package:ceu_student/course/course_page.dart';
 import 'package:ceu_student/utils/hex_color.dart';
 import 'package:flutter/material.dart';
 import 'package:badge/badge.dart';
-import './../score/score_page.dart';
+//import './../score/score_page.dart';
 import '../models/course.dart';
 
 class CourseList extends StatelessWidget {
@@ -25,8 +26,8 @@ class CourseList extends StatelessWidget {
                 onTap: () {
                   Navigator.push(
                     context,
-//                  MaterialPageRoute(builder: (context) => CoursePage(title: "Kardiologi",)),
-                    MaterialPageRoute(builder: (context) => ScorePage()),
+                  MaterialPageRoute(builder: (context) => CoursePage(title: "Kardiologi",)),
+//                    MaterialPageRoute(builder: (context) => ScorePage()),
                   );
                 },
                 title: Text(

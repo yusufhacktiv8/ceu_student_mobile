@@ -7,15 +7,17 @@ class Header extends AppBar {
     const Choice(title: 'Logout', id: 2),
   ];
 
+  final label;
   final onSelect;
 
   Header({
     Key key,
+    @required this.label,
     this.onSelect,// named parameter
   }) : super(key: key,
       centerTitle: true,
       leading: Icon(Icons.chat, color: Colors.blueAccent, size: 30,),
-      title: Text('Dashboard',
+      title: Text("$label",
             style: TextStyle(
                 color: Colors.black)),
       backgroundColor: Colors.white,

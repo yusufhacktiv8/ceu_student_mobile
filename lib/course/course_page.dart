@@ -1,3 +1,4 @@
+import 'package:ceu_student/components/header.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_circular_chart/flutter_circular_chart.dart';
 import './course_summary.dart';
@@ -24,75 +25,35 @@ const List<String> tabNames = const<String>[
 ];
 
 class _CoursePageState extends State<CoursePage> {
-  int _screen = 0;
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: tabNames.length,
-      child: new Scaffold(
-        appBar: new AppBar(
-          title: new Text(widget.title),
-        ),
-        body: new TabBarView(
-          children: new List<Widget>.generate(tabNames.length, (int index) {
-            switch (_screen) {
-              case 0: return new Center(
-//                child: new Text('First screen, ${tabNames[index]}'),
-                child: CourseSummary(),
-              );
-              case 1:
-                switch(index) {
-                  case 0: return Sgl();
-                  case 1: return Schedules();
-                  case 2: return Scores();
-                  case 3: return Portofolios();
-                  case 4: return Seminars();
-                  case 5: return Problems();
-                  default: return Sgl();
-                }
-            }
-          }),
-        ),
-        bottomNavigationBar: new Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            new AnimatedCrossFade(
-              firstChild: new Container(),
-              secondChild: new Material(
-                color: Theme
-                    .of(context)
-                    .primaryColor,
-                child: new TabBar(
-                  isScrollable: true,
-                  tabs: new List.generate(tabNames.length, (index) {
-                    return new Tab(text: tabNames[index].toUpperCase());
-                  }),
-                ),
+    return Scaffold(
+        appBar: Header(label: widget.title, onSelect: (title) {
+//          logout(title);
+        },),
+      body: Container(
+        color: Color(0xFFF5F5F5),
+        padding: EdgeInsets.all(15),
+        child: Column(
+          children: <Widget>[
+            Container(
+              height: 200,
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  border: Border.all(color: Colors.grey, width: 0.3),
+                  borderRadius: BorderRadius.all(Radius.circular(5))
               ),
-              crossFadeState: _screen == 0
-                  ? CrossFadeState.showFirst
-                  : CrossFadeState.showSecond,
-              duration: const Duration(milliseconds: 300),
-            ),
-            new BottomNavigationBar(
-              currentIndex: _screen,
-              onTap: (int index) {
-                setState(() {
-                  _screen = index;
-                });
-              },
-              items: [
-                new BottomNavigationBarItem(
-                  icon: new Icon(Icons.dehaze),
-                  title: new Text('Summary'),
-                ),
-                new BottomNavigationBarItem(
-                  icon: new Icon(Icons.assignment),
-                  title: new Text('Details'),
-                ),
-              ],
+              child: Column(
+                children: <Widget>[
+                  Container(
+                    height: 50,
+                    decoration: BoxDecoration(
+                      border: Border(bottom: BorderSide(color: Colors.grey, width: 0.3))
+                    ),
+                  )
+                ],
+              ),
             ),
           ],
         ),
