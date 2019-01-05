@@ -1,15 +1,20 @@
 import 'dart:convert';
 
+import 'package:ceu_student/models/department.dart';
+
 class Course {
-  final String name;
+  final Department department;
+  final String title;
 
   Course({
-    this.name,
+    this.department,
+    this.title,
   });
 
   static Course fromData(Map<String, dynamic> data){
     return Course(
-      name: data["name"],
+      department: Department.fromData(data['Department']),
+      title: data['title'],
     );
   }
 

@@ -1,23 +1,23 @@
+import 'package:ceu_student/utils/hex_color.dart';
 import 'package:flutter/material.dart';
 import 'package:badge/badge.dart';
 import './../score/score_page.dart';
+import '../models/course.dart';
 
-class CourseList extends StatefulWidget {
-  @override
-  _CourseListState createState() => _CourseListState();
-}
+class CourseList extends StatelessWidget {
 
-const List<String> items = const<String>[
-'Kardiologi', 'Interna', 'Jiwa'
-];
+  final List<Course> courses;
 
-class _CourseListState extends State<CourseList> {
+  CourseList({Key key,
+    @required this.courses,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Container(
       color: Colors.white,
       child: Column(
-        children: items.map((item) {
+        children: this.courses.map((course) {
           return Column(
             children: <Widget>[
               ListTile(
@@ -29,7 +29,7 @@ class _CourseListState extends State<CourseList> {
                   );
                 },
                 title: Text(
-                  item,
+                  course.title,
                   style: TextStyle(
                       fontSize: 17.0,
                       fontWeight: FontWeight.bold,
@@ -38,8 +38,9 @@ class _CourseListState extends State<CourseList> {
                 ),
 //                subtitle: Text("Prerequisite for level 1"),
                 leading: Badge.before(
+                  color: HexColor(course.department.color),
                   textStyle: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
-                  value: "  JIW  ",
+                  value: "  ${course.department.code}  ",
                   positionTop: 5,
                   child: Text(""),
                 ),
@@ -57,44 +58,5 @@ class _CourseListState extends State<CourseList> {
         }).toList(),
       ),
     );
-//    return ListView.builder(
-//      // Let the ListView know how many items it needs to build
-//      itemCount: items.length,
-//      // Provide a builder function. This is where the magic happens! We'll
-//      // convert each item into a Widget based on the type of item it is.
-//      itemBuilder: (context, index) {
-//        final item = items[index];
-//        return Column(
-//          children: <Widget>[
-//            ListTile(
-//              onTap: () {
-//                Navigator.push(
-//                  context,
-//                  MaterialPageRoute(builder: (context) => CoursePage()),
-//                );
-//              },
-//              title: Text(
-//                item,
-//                style: TextStyle(fontSize: 18.0),
-//              ),
-////                subtitle: Text("Prerequisite for level 1"),
-//              leading: Badge.before(
-//                value: "  JIW  ",
-//                positionTop: 5,
-//                child: Text(""),
-//              ),
-//              trailing: Badge.before(
-//                textStyle: TextStyle(fontSize: 2.0),
-//                spacing: 5,
-//                color: Colors.green,
-//                value: " ",
-//                child: Text("Completed"),
-//              ),
-//            ),
-//            Divider()
-//          ],
-//        );
-//      },
-//    );
   }
 }
