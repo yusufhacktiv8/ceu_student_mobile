@@ -1,3 +1,4 @@
+import 'package:ceu_student/components/status.dart';
 import 'package:ceu_student/utils/hex_color.dart';
 import 'package:flutter/material.dart';
 import 'package:badge/badge.dart';
@@ -44,13 +45,7 @@ class CourseList extends StatelessWidget {
                   positionTop: 5,
                   child: Text(""),
                 ),
-                trailing: Badge.before(
-                  textStyle: TextStyle(fontSize: 2.0),
-                  spacing: 5,
-                  color: Colors.green,
-                  value: " ",
-                  child: Text("Completed", style: TextStyle(fontSize: 16, color: Colors.black87),),
-                ),
+                trailing: Status(status: course.status,),
               ),
               Divider(),
             ],

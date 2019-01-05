@@ -5,16 +5,19 @@ import 'package:ceu_student/models/department.dart';
 class Course {
   final Department department;
   final String title;
+  final int status;
 
   Course({
     this.department,
     this.title,
+    this.status,
   });
 
   static Course fromData(Map<String, dynamic> data){
     return Course(
       department: Department.fromData(data['Department']),
       title: data['title'],
+      status: data['status'],
     );
   }
 
