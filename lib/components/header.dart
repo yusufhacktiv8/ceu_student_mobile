@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 class Header extends AppBar {
 
   static final List<Choice> choices = const <Choice>[
-    const Choice(title: 'Profile', icon: Icons.directions_bike),
-    const Choice(title: 'Logout', icon: Icons.directions_car),
+    const Choice(title: 'Profile', id: 1),
+    const Choice(title: 'Logout', id: 2),
   ];
 
   final onSelect;
@@ -23,7 +23,7 @@ class Header extends AppBar {
       actions: <Widget>[
           PopupMenuButton<Choice>(
             onSelected: (choice) {
-              onSelect(choice.title);
+              onSelect(choice);
             },
             child: Container(
               margin: EdgeInsets.only(right: 8.0),
@@ -88,8 +88,8 @@ class Header extends AppBar {
 }
 
 class Choice {
-  const Choice({this.title, this.icon});
+  const Choice({this.title, this.id});
 
   final String title;
-  final IconData icon;
+  final int id;
 }

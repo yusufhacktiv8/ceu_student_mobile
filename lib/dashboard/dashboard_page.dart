@@ -24,11 +24,12 @@ class _DashboardPageState extends State<DashboardPage> {
   final GlobalKey<RefreshIndicatorState> _refreshIndicatorKey = GlobalKey<RefreshIndicatorState>();
 
   static final List<Choice> choices = const <Choice>[
-    const Choice(title: 'Tingkat 1', icon: Icons.directions_bike),
-    const Choice(title: 'Tingkat 2', icon: Icons.directions_car),
+    const Choice(title: 'Tingkat 1', id: 1),
+    const Choice(title: 'Tingkat 2', id: 2),
   ];
 
   List<Course> courses = [];
+  Choice selectedChoice = choices[0];
 
   @override
   void initState() {
@@ -74,14 +75,19 @@ class _DashboardPageState extends State<DashboardPage> {
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: <Widget>[
                             PopupMenuButton<Choice>(
-                              //                onSelected: _select,
+                              onSelected: (choice) {
+                                setState(() {
+                                  this.selectedChoice = choice;
+                                });
+                                _refreshIndicatorKey.currentState?.show();
+                              },
                               child: Container(
                                 margin: EdgeInsets.only(right: 8.0),
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: <Widget>[
-                                    Text("Tingkat 1", style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold, fontSize: 16)),
+                                    Text("${selectedChoice.title}", style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold, fontSize: 16)),
                                     Icon(Icons.arrow_drop_down, color: Colors.black54)
                                   ],
                                 ),
@@ -131,10 +137,10 @@ class _DashboardPageState extends State<DashboardPage> {
               icon: new Icon(Icons.collections),
               title: new Text('Scores'),
             ),
-            new BottomNavigationBarItem(
-              icon: new Icon(Icons.event),
-              title: new Text('Schedules'),
-            ),
+//            new BottomNavigationBarItem(
+//              icon: new Icon(Icons.event),
+//              title: new Text('Schedules'),
+//            ),
             new BottomNavigationBarItem(
               icon: new Icon(Icons.account_circle),
               title: new Text('Profile'),
@@ -162,7 +168,7 @@ class _DashboardPageState extends State<DashboardPage> {
     try {
       var httpClient = new HttpClient();
       var request =
-      await httpClient.getUrl(Uri.parse("$URL/studentapp/courses"));
+      await httpClient.getUrl(Uri.parse("$URL/studentapp/courses?level=${selectedChoice.id}"));
       var response = await request.close();
       if (response.statusCode == HttpStatus.ok) {
         var json = await response.transform(utf8.decoder).join();
