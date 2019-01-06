@@ -47,11 +47,26 @@ class _CoursePageState extends State<CoursePage> {
               child: Column(
                 children: <Widget>[
                   Container(
-                    height: 50,
+                    padding: EdgeInsets.all(10),
+                    height: 60,
                     decoration: BoxDecoration(
                       border: Border(bottom: BorderSide(color: Colors.grey, width: 0.3))
                     ),
-                  )
+                    child: Row(
+                      children: <Widget>[
+                        Text("Summary", style: TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black87
+                        ),)
+                      ],
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.all(10),
+                    height: 130,
+                    child: CourseSummary(),
+                  ),
                 ],
               ),
             ),
