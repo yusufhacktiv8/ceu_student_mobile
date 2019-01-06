@@ -45,7 +45,9 @@ class _DashboardPageState extends State<DashboardPage> {
     return Scaffold(
         appBar: Header(label: 'Dashboard', onSelect: (title) {
           logout(title);
-        },),
+        },
+          leading: Icon(Icons.chat, color: Colors.blueAccent, size: 30,),
+        ),
         body: Center(
           child: new Column(
             mainAxisAlignment: MainAxisAlignment.center,

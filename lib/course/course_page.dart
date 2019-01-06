@@ -27,7 +27,14 @@ class _CoursePageState extends State<CoursePage> {
     return Scaffold(
         appBar: Header(label: widget.title, onSelect: (title) {
 //          logout(title);
-        },),
+        },
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back_ios, color: Colors.blueAccent, size: 25),
+            onPressed: () {
+              Navigator.pop(context);
+            }
+          ),
+        ),
       body: Container(
         color: Color(0xFFF5F5F5),
         padding: EdgeInsets.all(15),

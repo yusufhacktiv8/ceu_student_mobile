@@ -9,14 +9,16 @@ class Header extends AppBar {
 
   final label;
   final onSelect;
+  final leading;
 
   Header({
     Key key,
     @required this.label,
     this.onSelect,// named parameter
+    this.leading,
   }) : super(key: key,
       centerTitle: true,
-      leading: Icon(Icons.chat, color: Colors.blueAccent, size: 30,),
+      leading: leading,
       title: Text("$label",
             style: TextStyle(
                 color: Colors.black)),
