@@ -1,19 +1,19 @@
-import 'package:ceu_student/course/course_summary_item.dart';
+import 'package:ceu_student/course/course_score_item.dart';
 import 'package:flutter/material.dart';
 import 'package:badge/badge.dart';
 
-class CourseSummary extends StatefulWidget {
+class CourseScore extends StatefulWidget {
   @override
-  _CourseSummaryState createState() => _CourseSummaryState();
+  _CourseScoreState createState() => _CourseScoreState();
 }
 
-class _CourseSummaryState extends State<CourseSummary> {
+class _CourseScoreState extends State<CourseScore> {
   @override
   Widget build(BuildContext context) {
     return Container(
       child: Column(
         children: <Widget>[
-          CourseSummaryItem(
+          CourseScoreItem(
             name: Text(
               'Pre Test (SCB)',
               style: TextStyle(fontSize: 14),
@@ -24,7 +24,7 @@ class _CourseSummaryState extends State<CourseSummary> {
           Divider(
             color: Color(0xFFF1F1F1),
           ),
-          CourseSummaryItem(
+          CourseScoreItem(
             name: Text(
               'Case Report',
               style: TextStyle(fontSize: 14),
@@ -35,7 +35,7 @@ class _CourseSummaryState extends State<CourseSummary> {
           Divider(
             color: Color(0xFFF1F1F1),
           ),
-          CourseSummaryItem(
+          CourseScoreItem(
             name: Text(
               'Weekly Discussion',
               style: TextStyle(fontSize: 14),
@@ -46,7 +46,7 @@ class _CourseSummaryState extends State<CourseSummary> {
           Divider(
             color: Color(0xFFF1F1F1),
           ),
-          CourseSummaryItem(
+          CourseScoreItem(
             name: Text(
               'Case Test',
               style: TextStyle(fontSize: 14),
@@ -57,7 +57,7 @@ class _CourseSummaryState extends State<CourseSummary> {
           Divider(
             color: Color(0xFFF1F1F1),
           ),
-          CourseSummaryItem(
+          CourseScoreItem(
             name: Text(
               'Post Test',
               style: TextStyle(fontSize: 14),
@@ -68,7 +68,7 @@ class _CourseSummaryState extends State<CourseSummary> {
           Divider(
             color: Color(0xFFF1F1F1),
           ),
-          CourseSummaryItem(
+          CourseScoreItem(
             name: Text(
               'Total',
               style: TextStyle(

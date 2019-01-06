@@ -1,7 +1,7 @@
 import 'package:ceu_student/components/header.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_circular_chart/flutter_circular_chart.dart';
-import './course_summary.dart';
+import './course_score.dart';
 import './sgl.dart';
 import './schedules.dart';
 import './scores.dart';
@@ -61,7 +61,7 @@ class _CoursePageState extends State<CoursePage> {
                   Container(
                     padding: EdgeInsets.all(10),
                     height: 250,
-                    child: CourseSummary(),
+                    child: CourseScore(),
                   ),
                   Container(
                     padding: EdgeInsets.all(10),

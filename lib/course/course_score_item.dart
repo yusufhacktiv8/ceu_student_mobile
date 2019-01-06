@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class CourseSummaryItem extends StatelessWidget {
+class CourseScoreItem extends StatelessWidget {
 
   final Widget name;
   final double score;
   final double percentage;
 
-  CourseSummaryItem({Key key,
+  CourseScoreItem({Key key,
     @required this.name,
     @required this.score,
     @required this.percentage
