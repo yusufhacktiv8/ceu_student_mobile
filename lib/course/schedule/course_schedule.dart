@@ -15,27 +15,22 @@ class _CourseScheduleState extends State<CourseSchedule> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           CourseScheduleItem(title: 'Main'),
-          Divider(
-            color: Color(0xFFA0A0A0),
-          ),
+          Divider(),
           CourseScheduleItem(
             title: 'Hospital 1',
             description: 'Ibnu Sina',
             adviser: "-",
             examiner: "-",
           ),
-          Divider(
-            color: Color(0xFFA0A0A0),
-          ),
+          Divider(),
           CourseScheduleItem(
             title: 'Clinic',
             description: 'Ibnu Sina',
             dpk: '-'
           ),
-          Divider(
-            color: Color(0xFFA0A0A0),
-          ),
+          Divider(),
           CourseScheduleItem(title: 'Hospital 2', description: 'Ibnu Sina',),
+          Padding(padding: EdgeInsets.only(bottom: 15),)
         ],
       ),
     );
