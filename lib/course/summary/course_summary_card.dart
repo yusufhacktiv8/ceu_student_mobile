@@ -5,7 +5,7 @@ class CourseSummaryCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 245,
+      height: 430,
       decoration: BoxDecoration(
           color: Colors.white,
           border: Border.all(color: Colors.grey, width: 0.3),
@@ -30,8 +30,8 @@ class CourseSummaryCard extends StatelessWidget {
             ),
           ),
           Container(
-            padding: EdgeInsets.all(10),
-            height: 150,
+//            padding: EdgeInsets.all(10),
+            height: 345,
             child: CourseSummary(),
           ),
         ],

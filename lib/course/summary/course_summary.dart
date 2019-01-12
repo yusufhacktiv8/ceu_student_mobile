@@ -14,44 +14,59 @@ class _CourseSummaryState extends State<CourseSummary> {
     return Container(
       child: Column(
         children: <Widget>[
-          Row(
-            children: <Widget>[
-              Text("Status: ", style: TextStyle(fontWeight: FontWeight.bold),),
-              Padding(padding: EdgeInsets.only(right: 10),),
-              Status(status: 2,),
-            ],
+          ListTile(
+            title: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Text('Status', style: TextStyle(fontWeight: FontWeight.bold)),
+//                Status(status: 2,),
+              ],
+            ),
+            trailing: Status(status: 2,),
           ),
-          Padding(padding: EdgeInsets.only(bottom: 10),),
-          Row(
-            children: <Widget>[
-              Text("SGL: ", style: TextStyle(fontWeight: FontWeight.bold)),
-              Padding(padding: EdgeInsets.only(right: 10),),
-              Text("20 Item(s)", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.blue),),
-            ],
+          Divider(),
+          ListTile(
+            title: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Text('SGL', style: TextStyle(fontWeight: FontWeight.bold)),
+                Text("20", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.blue),),
+              ],
+            ),
+            trailing: Icon(Icons.navigate_next),
           ),
-          Padding(padding: EdgeInsets.only(bottom: 10),),
-          Row(
-            children: <Widget>[
-              Text("Portofolio: ", style: TextStyle(fontWeight: FontWeight.bold)),
-              Padding(padding: EdgeInsets.only(right: 10),),
-              Text("20 Item(s)", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.blue),),
-            ],
+          Divider(),
+          ListTile(
+            title: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Text('Portofolio', style: TextStyle(fontWeight: FontWeight.bold)),
+                Text("20", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.blue),),
+              ],
+            ),
+            trailing: Icon(Icons.navigate_next),
           ),
-          Padding(padding: EdgeInsets.only(bottom: 10),),
-          Row(
-            children: <Widget>[
-              Text("Seminar: ", style: TextStyle(fontWeight: FontWeight.bold)),
-              Padding(padding: EdgeInsets.only(right: 10),),
-              Text("20 Item(s)", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.blue),),
-            ],
+          Divider(),
+          ListTile(
+            title: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Text('Seminar', style: TextStyle(fontWeight: FontWeight.bold)),
+                Text("20", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.blue),),
+              ],
+            ),
+            trailing: Icon(Icons.navigate_next),
           ),
-          Padding(padding: EdgeInsets.only(bottom: 10),),
-          Row(
-            children: <Widget>[
-              Text("Problem: ", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.red),),
-              Padding(padding: EdgeInsets.only(right: 10),),
-              Text("-"),
-            ],
+          Divider(),
+          ListTile(
+            title: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Text('Problem', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.red)),
+                Text("20", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.blue),),
+              ],
+            ),
+            trailing: Icon(Icons.navigate_next),
           ),
         ],
       ),
