@@ -1,4 +1,5 @@
 import 'package:ceu_student/events/events.dart';
+import 'package:ceu_student/profile/profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:io';
@@ -152,12 +153,23 @@ class _DashboardPageState extends State<DashboardPage> {
     );
   }
 
-  logout(title) {
-    _setMobileToken('');
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => LoginPage()),
-    );
+  logout(choice) {
+    switch (choice.title) {
+      case 'Profile':
+        _setMobileToken('');
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => ProfilePage()),
+        );
+        break;
+      default:
+        _setMobileToken('');
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => LoginPage()),
+        );
+    }
+
   }
 
   Future<bool> _setMobileToken(String token) async {
