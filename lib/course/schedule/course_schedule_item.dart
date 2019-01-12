@@ -39,6 +39,7 @@ class CourseScheduleItem extends StatelessWidget {
           Text("19 Feb 2019", style: TextStyle(fontSize: 14),),
         ],
       ),
+      Padding(padding: EdgeInsets.only(bottom: 5),),
       Row(
         children: <Widget>[
           Icon(Icons.calendar_today, size: 13, color: Colors.grey,),
@@ -53,6 +54,7 @@ class CourseScheduleItem extends StatelessWidget {
     ];
 
     if (adviser != null) {
+      columnItems.add(Padding(padding: EdgeInsets.only(bottom: 5),),);
       columnItems.add(Row(
         children: <Widget>[
           Icon(Icons.recent_actors, size: 15, color: Colors.grey,),
@@ -62,6 +64,7 @@ class CourseScheduleItem extends StatelessWidget {
       ));
     }
     if (examiner != null) {
+      columnItems.add(Padding(padding: EdgeInsets.only(bottom: 5),),);
       columnItems.add(Row(
         children: <Widget>[
           Icon(Icons.rate_review, size: 15, color: Colors.grey,),
@@ -71,6 +74,7 @@ class CourseScheduleItem extends StatelessWidget {
       ));
     }
     if (dpk != null) {
+      columnItems.add(Padding(padding: EdgeInsets.only(bottom: 5),),);
       columnItems.add(Row(
         children: <Widget>[
           Icon(Icons.streetview, size: 15, color: Colors.grey,),

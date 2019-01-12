@@ -1,6 +1,7 @@
 import 'package:ceu_student/components/header.dart';
 import 'package:ceu_student/course/schedule/course_schedule_card.dart';
 import 'package:ceu_student/course/score/course_score_card.dart';
+import 'package:ceu_student/course/summary/course_summary_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_circular_chart/flutter_circular_chart.dart';
 import 'package:ceu_student/course/score/course_score.dart';
@@ -42,6 +43,8 @@ class _CoursePageState extends State<CoursePage> {
         padding: EdgeInsets.all(15),
         child: ListView(
           children: <Widget>[
+            CourseSummaryCard(),
+            Padding(padding: EdgeInsets.only(bottom: 15)),
             CourseScoreCard(),
             Padding(padding: EdgeInsets.only(bottom: 15)),
             CourseScheduleCard(),

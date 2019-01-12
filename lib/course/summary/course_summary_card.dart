@@ -1,11 +1,11 @@
-import 'package:ceu_student/course/schedule/course_schedule.dart';
+import 'package:ceu_student/course/summary/course_summary.dart';
 import 'package:flutter/material.dart';
 
-class CourseScheduleCard extends StatelessWidget {
+class CourseSummaryCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 490,
+      height: 245,
       decoration: BoxDecoration(
           color: Colors.white,
           border: Border.all(color: Colors.grey, width: 0.3),
@@ -20,20 +20,19 @@ class CourseScheduleCard extends StatelessWidget {
                 border: Border(bottom: BorderSide(color: Colors.grey, width: 0.3))
             ),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Text("Schedule", style: TextStyle(
+                Text("Summary", style: TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.bold,
                     color: Colors.black87
-                ),),
+                ),)
               ],
             ),
           ),
           Container(
-//            padding: EdgeInsets.all(10),
-            height: 420,
-            child: CourseSchedule(),
+            padding: EdgeInsets.all(10),
+            height: 150,
+            child: CourseSummary(),
           ),
         ],
       ),
