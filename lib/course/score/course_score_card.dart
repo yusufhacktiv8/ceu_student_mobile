@@ -1,4 +1,4 @@
-import 'package:ceu_student/course/course_score.dart';
+import 'package:ceu_student/course/score/course_score.dart';
 import 'package:flutter/material.dart';
 
 class CourseScoreCard extends StatelessWidget {

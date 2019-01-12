@@ -1,9 +1,9 @@
 import 'package:ceu_student/components/header.dart';
-import 'package:ceu_student/course/course_schedule_card.dart';
-import 'package:ceu_student/course/course_score_card.dart';
+import 'package:ceu_student/course/schedule/course_schedule_card.dart';
+import 'package:ceu_student/course/score/course_score_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_circular_chart/flutter_circular_chart.dart';
-import './course_score.dart';
+import 'package:ceu_student/course/score/course_score.dart';
 import './sgl.dart';
 import './schedules.dart';
 import './scores.dart';

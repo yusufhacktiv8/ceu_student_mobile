@@ -1,4 +1,4 @@
-import 'package:ceu_student/course/course_score_item.dart';
+import 'package:ceu_student/course/score/course_score_item.dart';
 import 'package:flutter/material.dart';
 import 'package:badge/badge.dart';
 

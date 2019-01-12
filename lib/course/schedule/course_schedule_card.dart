@@ -1,4 +1,4 @@
-import 'package:ceu_student/course/course_score.dart';
+import 'package:ceu_student/course/schedule/course_schedule.dart';
 import 'package:flutter/material.dart';
 
 class CourseScheduleCard extends StatelessWidget {
@@ -30,9 +30,9 @@ class CourseScheduleCard extends StatelessWidget {
             ),
           ),
           Container(
-            padding: EdgeInsets.all(10),
+//            padding: EdgeInsets.all(10),
             height: 250,
-            child: CourseScore(),
+            child: CourseSchedule(),
           ),
           Container(
             padding: EdgeInsets.all(10),
