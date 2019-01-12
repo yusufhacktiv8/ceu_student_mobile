@@ -18,11 +18,20 @@ class _CourseScheduleState extends State<CourseSchedule> {
           Divider(
             color: Color(0xFFA0A0A0),
           ),
-          CourseScheduleItem(title: 'Hospital 1', description: 'Ibnu Sina',),
+          CourseScheduleItem(
+            title: 'Hospital 1',
+            description: 'Ibnu Sina',
+            adviser: "-",
+            examiner: "-",
+          ),
           Divider(
             color: Color(0xFFA0A0A0),
           ),
-          CourseScheduleItem(title: 'Clinic', description: 'Ibnu Sina',),
+          CourseScheduleItem(
+            title: 'Clinic',
+            description: 'Ibnu Sina',
+            dpk: '-'
+          ),
           Divider(
             color: Color(0xFFA0A0A0),
           ),
