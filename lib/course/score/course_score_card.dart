@@ -5,7 +5,7 @@ class CourseScoreCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 365,
+//      height: 365,
       decoration: BoxDecoration(
           color: Colors.white,
           border: Border.all(color: Colors.grey, width: 0.3),
@@ -30,8 +30,8 @@ class CourseScoreCard extends StatelessWidget {
             ),
           ),
           Container(
-            padding: EdgeInsets.all(10),
-            height: 250,
+//            padding: EdgeInsets.all(10),
+//            height: 250,
             child: CourseScore(),
           ),
           Container(
