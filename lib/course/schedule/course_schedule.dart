@@ -1,5 +1,4 @@
 import 'package:ceu_student/course/schedule/course_schedule_item.dart';
-import 'package:ceu_student/course/score/course_score_item.dart';
 import 'package:flutter/material.dart';
 
 class CourseSchedule extends StatefulWidget {
@@ -19,7 +18,15 @@ class _CourseScheduleState extends State<CourseSchedule> {
           Divider(
             color: Color(0xFFA0A0A0),
           ),
-          CourseScheduleItem(title: 'Hospital 1'),
+          CourseScheduleItem(title: 'Hospital 1', description: 'Ibnu Sina',),
+          Divider(
+            color: Color(0xFFA0A0A0),
+          ),
+          CourseScheduleItem(title: 'Clinic', description: 'Ibnu Sina',),
+          Divider(
+            color: Color(0xFFA0A0A0),
+          ),
+          CourseScheduleItem(title: 'Hospital 2', description: 'Ibnu Sina',),
         ],
       ),
     );
