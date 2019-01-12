@@ -122,33 +122,33 @@ class _DashboardPageState extends State<DashboardPage> {
             ],
           ),
         ),
-        bottomNavigationBar: new BottomNavigationBar(
-          type: BottomNavigationBarType.fixed,
-          currentIndex: 1,
-//          onTap: (int index) {
-//            setState(() {
-//              _screen = index;
-//            });
-//          },
-          items: [
-            new BottomNavigationBarItem(
-              icon: new Icon(Icons.home),
-              title: new Text('Home'),
-            ),
-            new BottomNavigationBarItem(
-              icon: new Icon(Icons.collections),
-              title: new Text('Scores'),
-            ),
+//        bottomNavigationBar: new BottomNavigationBar(
+//          type: BottomNavigationBarType.fixed,
+//          currentIndex: 1,
+////          onTap: (int index) {
+////            setState(() {
+////              _screen = index;
+////            });
+////          },
+//          items: [
 //            new BottomNavigationBarItem(
-//              icon: new Icon(Icons.event),
-//              title: new Text('Schedules'),
+//              icon: new Icon(Icons.home),
+//              title: new Text('Home'),
 //            ),
-            new BottomNavigationBarItem(
-              icon: new Icon(Icons.account_circle),
-              title: new Text('Profile'),
-            ),
-          ],
-        )
+//            new BottomNavigationBarItem(
+//              icon: new Icon(Icons.collections),
+//              title: new Text('Scores'),
+//            ),
+////            new BottomNavigationBarItem(
+////              icon: new Icon(Icons.event),
+////              title: new Text('Schedules'),
+////            ),
+//            new BottomNavigationBarItem(
+//              icon: new Icon(Icons.account_circle),
+//              title: new Text('Profile'),
+//            ),
+//          ],
+//        )
     );
   }
 
