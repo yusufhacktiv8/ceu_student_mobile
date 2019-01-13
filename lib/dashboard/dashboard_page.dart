@@ -1,14 +1,13 @@
 import 'package:ceu_student/events/events.dart';
 import 'package:ceu_student/profile/profile_page.dart';
+import 'package:ceu_student/utils/common.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:io';
 import 'dart:async';
 import 'dart:convert';
 import '../components/header.dart';
 import './course_chart.dart';
 import './course_list.dart';
-import '../security/login_page.dart';
 import '../constant.dart';
 import '../models/course.dart';
 
@@ -21,7 +20,7 @@ class DashboardPage extends StatefulWidget {
 
 class _DashboardPageState extends State<DashboardPage> {
 
-  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+//  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   final GlobalKey<RefreshIndicatorState> _refreshIndicatorKey = GlobalKey<RefreshIndicatorState>();
   final GlobalKey<ScaffoldState> mScaffoldState = new GlobalKey<ScaffoldState>();
 
@@ -46,8 +45,8 @@ class _DashboardPageState extends State<DashboardPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: mScaffoldState,
-        appBar: Header(label: 'Dashboard', onSelect: (title) {
-          logout(title);
+        appBar: Header(label: 'Dashboard', onSelect: (choice) {
+          onSelectChoice(choice);
         },
 //          leading: Icon(Icons.chat, color: Colors.blueAccent, size: 30,),
         ),
@@ -154,33 +153,23 @@ class _DashboardPageState extends State<DashboardPage> {
     );
   }
 
-  logout(choice) {
+  onSelectChoice(choice) {
     switch (choice.title) {
       case 'Profile':
-        _setMobileToken('');
+        setMobileToken('');
         Navigator.push(
           context,
           MaterialPageRoute(builder: (context) => ProfilePage()),
         );
         break;
       default:
-        _setMobileToken('');
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => LoginPage()),
-        );
+        logout(context);
     }
 
   }
 
-  Future<bool> _setMobileToken(String token) async {
-    final SharedPreferences prefs = await _prefs;
-
-    return prefs.setString(MOBILE_TOKEN_KEY, token);
-  }
-
   Future<Null> findCourses() async {
-    String token = await _getMobileToken();
+    String token = await getMobileToken();
     try {
       var httpClient = new HttpClient();
       var request =
@@ -196,49 +185,13 @@ class _DashboardPageState extends State<DashboardPage> {
         });
         eventBus.fire(CoursesChangedEvent(courses));
       } else if (response.statusCode == HttpStatus.forbidden){
-        _showLoginError('Session Expired');
+        showLoginError(mScaffoldState, context, 'Session Expired');
       } else {
-        _showError('Error finding courses (${response.statusCode})');
+        showError(mScaffoldState, 'Error finding courses (${response.statusCode})');
       }
     } catch (exception) {
-      _showError('Error finding courses');
+      showError(mScaffoldState, 'Error finding courses');
     }
     return null;
   }
-
-  void _showLoginError(String message) {
-    final snackBar = new SnackBar(
-        content: Row(
-          children: <Widget>[
-            Text(message, style: TextStyle(fontSize: 17),),
-            FlatButton(
-              child: Text('LOGIN'),
-              onPressed: () {
-                _setMobileToken('');
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => LoginPage()),
-                );
-              },
-            )
-          ],
-        ),
-      duration: Duration(seconds: 5),
-    );
-    mScaffoldState.currentState.showSnackBar(snackBar);
-  }
-
-  void _showError(String message) {
-    final snackBar = new SnackBar(
-      content: Text(message, style: TextStyle(fontSize: 17),),
-      duration: Duration(seconds: 5),
-    );
-    mScaffoldState.currentState.showSnackBar(snackBar);
-  }
-
-  Future<String> _getMobileToken() async {
-    final SharedPreferences prefs = await _prefs;
-    return prefs.getString(MOBILE_TOKEN_KEY) ?? '';
-  }
-
 }

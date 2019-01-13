@@ -26,7 +26,7 @@ class CourseList extends StatelessWidget {
                 onTap: () {
                   Navigator.push(
                     context,
-                  MaterialPageRoute(builder: (context) => CoursePage(title: "Kardiologi",)),
+                  MaterialPageRoute(builder: (context) => CoursePage(course: course)),
 //                    MaterialPageRoute(builder: (context) => ScorePage()),
                   );
                 },
