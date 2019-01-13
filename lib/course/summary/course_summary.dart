@@ -1,5 +1,6 @@
 import 'package:ceu_student/components/status.dart';
 import 'package:ceu_student/course/score/course_score_item.dart';
+import 'package:ceu_student/course/sgl.dart';
 import 'package:flutter/material.dart';
 import 'package:badge/badge.dart';
 
@@ -26,6 +27,12 @@ class _CourseSummaryState extends State<CourseSummary> {
           ),
           Divider(),
           ListTile(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Sgl(title: "Kardiologi - SGL",)),
+              );
+            },
             title: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[

@@ -47,7 +47,7 @@ class _DashboardPageState extends State<DashboardPage> {
         appBar: Header(label: 'Dashboard', onSelect: (title) {
           logout(title);
         },
-          leading: Icon(Icons.chat, color: Colors.blueAccent, size: 30,),
+//          leading: Icon(Icons.chat, color: Colors.blueAccent, size: 30,),
         ),
         body: Center(
           child: new Column(
@@ -59,7 +59,6 @@ class _DashboardPageState extends State<DashboardPage> {
                   key: _refreshIndicatorKey,
                   onRefresh: findCourses,
                   child: ListView(
-
                     children: <Widget>[
 //                  CourseSummaryChart(),
                   Container(
