@@ -18,6 +18,7 @@ class _LoginPageState extends State<LoginPage> {
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   final _formKey = GlobalKey<FormState>();
   final LoginFormValue _formValue = new LoginFormValue();
+  bool loading = false;
 
   @override
   Widget build(BuildContext context) {
@@ -87,6 +88,7 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       Padding(padding: EdgeInsets.only(bottom: 30),),
                       RoundButton(
+                        loading: loading,
                           label: "Sign In",
                           radius: 40.0,
                         onClick: () {
@@ -107,7 +109,13 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   Future<void> login() async{
+
+    if (loading) return;
+
     _formKey.currentState.save();
+    setState(() {
+      loading = true;
+    });
     try {
       var httpClient = new HttpClient();
       var request = await httpClient.postUrl(Uri.parse('$URL/security/signin'));
@@ -124,17 +132,29 @@ class _LoginPageState extends State<LoginPage> {
         var token = data["token"];
         await _setMobileToken(token);
         _formKey.currentState.reset();
+        setState(() {
+          loading = false;
+        });
         Navigator.push(
           context,
           MaterialPageRoute(builder: (context) => DashboardPage()),
         );
       } else if (response.statusCode == HttpStatus.forbidden) {
         _showDialog("Invalid Credentials");
+        setState(() {
+          loading = false;
+        });
       } else {
         _showDialog("Connection Error");
+        setState(() {
+          loading = false;
+        });
       }
     } catch (exception) {
       _showDialog("Connection Error");
+      setState(() {
+        loading = false;
+      });
     }
   }
 
