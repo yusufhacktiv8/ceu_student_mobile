@@ -141,20 +141,11 @@ class _LoginPageState extends State<LoginPage> {
         );
       } else if (response.statusCode == HttpStatus.forbidden) {
         _showDialog("Invalid Credentials");
-        setState(() {
-          loading = false;
-        });
       } else {
         _showDialog("Connection Error");
-        setState(() {
-          loading = false;
-        });
       }
     } catch (exception) {
       _showDialog("Connection Error");
-      setState(() {
-        loading = false;
-      });
     }
   }
 
