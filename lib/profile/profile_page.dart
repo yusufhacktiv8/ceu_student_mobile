@@ -2,6 +2,7 @@ import 'package:ceu_student/components/header.dart';
 import 'package:ceu_student/course/schedule/course_schedule_card.dart';
 import 'package:ceu_student/course/score/course_score_card.dart';
 import 'package:ceu_student/course/summary/course_summary_card.dart';
+import 'package:ceu_student/profile/details.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_circular_chart/flutter_circular_chart.dart';
 
@@ -70,8 +71,14 @@ class _ProfilePageState extends State<ProfilePage> {
             Container(color: Color(0xFFF5F5F5), height: 35,),
             Container(
               child: ListTile(
-                title: Text('Info', style: TextStyle(color: Colors.blue),),
+                title: Text('Details', style: TextStyle(color: Colors.blue),),
                 trailing: Icon(Icons.navigate_next),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Details(title: "Details",)),
+                  );
+                },
               ),
             ),
             Container(color: Color(0xFFF5F5F5), height: 35,),
