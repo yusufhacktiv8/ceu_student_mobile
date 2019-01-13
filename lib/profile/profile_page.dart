@@ -41,8 +41,8 @@ class _ProfilePageState extends State<ProfilePage> {
           children: <Widget>[
             Container(color: Color(0xFFF5F5F5), height: 15,),
             Container(
-              height: 130,
-              padding: EdgeInsets.all(15),
+              height: 120,
+              padding: EdgeInsets.all(10),
               child: Center(
                 child: Icon(Icons.account_circle, color: Colors.black12, size: 100,)
               ),
@@ -69,7 +69,14 @@ class _ProfilePageState extends State<ProfilePage> {
                 padding: EdgeInsets.all(15),
                 child: Text('110 2014 0118 - 111 2017 2120')
             ),
-            Container(color: Color(0xFFF5F5F5), height: 45,),
+            Container(color: Color(0xFFF5F5F5), height: 35,),
+            Container(
+              child: ListTile(
+                title: Text('Info', style: TextStyle(color: Colors.blue),),
+                trailing: Icon(Icons.navigate_next),
+              ),
+            ),
+            Container(color: Color(0xFFF5F5F5), height: 35,),
             Container(color: Colors.white, height: 45,
                 alignment: Alignment.center,
 //                padding: EdgeInsets.all(15),

@@ -10,8 +10,6 @@ void main(){
   runApp(new MyApp());
 }
 
-final GlobalKey<AnimatedCircularChartState> _chartKey = new GlobalKey<AnimatedCircularChartState>();
-
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
