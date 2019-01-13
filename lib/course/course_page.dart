@@ -12,8 +12,6 @@ import './portofolios.dart';
 import './seminars.dart';
 import './problems.dart';
 
-final GlobalKey<AnimatedCircularChartState> _chartKey = new GlobalKey<AnimatedCircularChartState>();
-
 class CoursePage extends StatefulWidget {
   CoursePage({Key key, this.title}) : super(key: key);
 

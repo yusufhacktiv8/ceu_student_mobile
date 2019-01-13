@@ -16,10 +16,9 @@ class  CourseChart extends StatefulWidget {
 
 }
 
-final GlobalKey<AnimatedCircularChartState> _chartKey = new GlobalKey<AnimatedCircularChartState>();
-
 class _CourseChartState extends State<CourseChart> {
 
+  final GlobalKey<AnimatedCircularChartState> _chartKey = new GlobalKey<AnimatedCircularChartState>();
   List<Course> courses = [];
 
   @override
