@@ -1,8 +1,12 @@
+import 'dart:io';
+import 'dart:async';
+import 'dart:convert';
 import 'package:ceu_student/components/header.dart';
 import 'package:ceu_student/course/schedule/course_schedule_card.dart';
 import 'package:ceu_student/course/score/course_score_card.dart';
 import 'package:ceu_student/course/summary/course_summary_card.dart';
 import 'package:ceu_student/models/course.dart';
+import 'package:ceu_student/utils/common.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../constant.dart';
@@ -28,8 +32,18 @@ class CoursePage extends StatefulWidget {
 
 class _CoursePageState extends State<CoursePage> {
 
-  Course _course;
+  Course _course = new Course();
   final GlobalKey<ScaffoldState> mScaffoldState = new GlobalKey<ScaffoldState>();
+  final GlobalKey<RefreshIndicatorState> _refreshIndicatorKeyCoursePage = GlobalKey<RefreshIndicatorState>();
+
+  @override
+  void initState() {
+    super.initState();
+//    findCourses();
+    Future.delayed(const Duration(milliseconds: 500), () {
+      _refreshIndicatorKeyCoursePage.currentState?.show();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,42 +61,46 @@ class _CoursePageState extends State<CoursePage> {
       body: Container(
         color: Color(0xFFF5F5F5),
         padding: EdgeInsets.all(15),
-        child: ListView(
-          children: <Widget>[
-            CourseSummaryCard(),
-            Padding(padding: EdgeInsets.only(bottom: 15)),
-            CourseScoreCard(),
-            Padding(padding: EdgeInsets.only(bottom: 15)),
-            CourseScheduleCard(),
-          ],
+        child: RefreshIndicator(
+          key: _refreshIndicatorKeyCoursePage,
+          onRefresh: findCourse,
+          child: ListView(
+            children: <Widget>[
+              CourseSummaryCard(course: _course),
+              Padding(padding: EdgeInsets.only(bottom: 15)),
+              CourseScoreCard(),
+              Padding(padding: EdgeInsets.only(bottom: 15)),
+              CourseScheduleCard(),
+            ],
+          ),
         ),
       ),
     );
   }
 
-//  Future<Null> findCourseById(double courseId) async {
-//    String token = await _getMobileToken();
-//    try {
-//      var httpClient = new HttpClient();
-//      var request =
-//      await httpClient.getUrl(Uri.parse("$URL/studentapp/courses?level=${selectedChoice.id}"));
-//      request.headers.set('Authorization', 'Bearer $token');
-//      request.headers.set('content-type', 'application/json');
-//      var response = await request.close();
-//      if (response.statusCode == HttpStatus.ok) {
-//        var json = await response.transform(utf8.decoder).join();
-//        Course course = Course.fromJson(json);
-//        setState(() {
-//          this._course = course;
-//        });
-//      } else if (response.statusCode == HttpStatus.forbidden){
-//        _showLoginError('Session Expired');
-//      } else {
-//        _showError('Error finding courses (${response.statusCode})');
-//      }
-//    } catch (exception) {
-//      _showError('Error finding courses');
-//    }
-//    return null;
-//  }
+  Future<Null> findCourse() async {
+    String token = await getMobileToken();
+    try {
+      var httpClient = new HttpClient();
+      var request =
+      await httpClient.getUrl(Uri.parse("$URL/studentapp/courses/${widget.course.id}"));
+      request.headers.set('Authorization', 'Bearer $token');
+      request.headers.set('content-type', 'application/json');
+      var response = await request.close();
+      if (response.statusCode == HttpStatus.ok) {
+        var json = await response.transform(utf8.decoder).join();
+        Course course = Course.fromJson(json);
+        setState(() {
+          this._course = course;
+        });
+      } else if (response.statusCode == HttpStatus.forbidden){
+        showLoginError(mScaffoldState, context, 'Session Expired');
+      } else {
+        showError(mScaffoldState, 'Error finding courses (${response.statusCode})');
+      }
+    } catch (exception) {
+      showError(mScaffoldState, 'Error finding courses');
+    }
+    return null;
+  }
 }

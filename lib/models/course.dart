@@ -3,11 +3,13 @@ import 'dart:convert';
 import 'package:ceu_student/models/department.dart';
 
 class Course {
+  final int id;
   final Department department;
   final String title;
   final int status;
 
   Course({
+    this.id,
     this.department,
     this.title,
     this.status,
@@ -15,6 +17,7 @@ class Course {
 
   static Course fromData(Map<String, dynamic> data){
     return Course(
+      id: data['id'],
       department: Department.fromData(data['Department']),
       title: data['title'],
       status: data['status'],

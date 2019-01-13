@@ -1,17 +1,29 @@
 import 'package:ceu_student/components/status.dart';
 import 'package:ceu_student/course/score/course_score_item.dart';
 import 'package:ceu_student/course/sgl.dart';
+import 'package:ceu_student/models/course.dart';
 import 'package:flutter/material.dart';
 import 'package:badge/badge.dart';
 
 class CourseSummary extends StatefulWidget {
+
+  final Course course;
+
+  CourseSummary({Key key,
+    this.course,
+  }) : super(key: key);
+
   @override
   _CourseSummaryState createState() => _CourseSummaryState();
 }
 
 class _CourseSummaryState extends State<CourseSummary> {
+
   @override
   Widget build(BuildContext context) {
+
+    var courseStatus = widget.course != null ? Status(status: widget.course.status,) : Text('-');
+
     return Container(
       child: Column(
         children: <Widget>[
@@ -23,7 +35,7 @@ class _CourseSummaryState extends State<CourseSummary> {
 //                Status(status: 2,),
               ],
             ),
-            trailing: Status(status: 2,),
+            trailing: courseStatus,
           ),
           Divider(),
           ListTile(

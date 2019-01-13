@@ -20,7 +20,6 @@ class DashboardPage extends StatefulWidget {
 
 class _DashboardPageState extends State<DashboardPage> {
 
-//  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   final GlobalKey<RefreshIndicatorState> _refreshIndicatorKey = GlobalKey<RefreshIndicatorState>();
   final GlobalKey<ScaffoldState> mScaffoldState = new GlobalKey<ScaffoldState>();
 
