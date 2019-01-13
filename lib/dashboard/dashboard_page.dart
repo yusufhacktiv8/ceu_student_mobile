@@ -23,6 +23,7 @@ class _DashboardPageState extends State<DashboardPage> {
 
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   final GlobalKey<RefreshIndicatorState> _refreshIndicatorKey = GlobalKey<RefreshIndicatorState>();
+  final GlobalKey<ScaffoldState> mScaffoldState = new GlobalKey<ScaffoldState>();
 
   static final List<Choice> choices = const <Choice>[
     const Choice(title: 'Tingkat 1', id: 1),
@@ -44,6 +45,7 @@ class _DashboardPageState extends State<DashboardPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: mScaffoldState,
         appBar: Header(label: 'Dashboard', onSelect: (title) {
           logout(title);
         },
@@ -178,10 +180,13 @@ class _DashboardPageState extends State<DashboardPage> {
   }
 
   Future<Null> findCourses() async {
+    String token = await _getMobileToken();
     try {
       var httpClient = new HttpClient();
       var request =
       await httpClient.getUrl(Uri.parse("$URL/studentapp/courses?level=${selectedChoice.id}"));
+      request.headers.set('Authorization', 'Bearer $token');
+      request.headers.set('content-type', 'application/json');
       var response = await request.close();
       if (response.statusCode == HttpStatus.ok) {
         var json = await response.transform(utf8.decoder).join();
@@ -190,8 +195,10 @@ class _DashboardPageState extends State<DashboardPage> {
           this.courses = courses;
         });
         eventBus.fire(CoursesChangedEvent(courses));
+      } else if (response.statusCode == HttpStatus.forbidden){
+        _showLoginError('Session Expired');
       } else {
-        _showError('Error finding courses');
+        _showError('Error finding courses (${response.statusCode})');
       }
     } catch (exception) {
       _showError('Error finding courses');
@@ -199,12 +206,39 @@ class _DashboardPageState extends State<DashboardPage> {
     return null;
   }
 
-  void _showError(String message) {
-    final snackBar = SnackBar(
-      content: Text(message),
+  void _showLoginError(String message) {
+    final snackBar = new SnackBar(
+        content: Row(
+          children: <Widget>[
+            Text(message, style: TextStyle(fontSize: 17),),
+            FlatButton(
+              child: Text('LOGIN'),
+              onPressed: () {
+                _setMobileToken('');
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => LoginPage()),
+                );
+              },
+            )
+          ],
+        ),
+      duration: Duration(seconds: 5),
     );
-
-    // Find the Scaffold in the Widget tree and use it to show a SnackBar!
-    Scaffold.of(context).showSnackBar(snackBar);
+    mScaffoldState.currentState.showSnackBar(snackBar);
   }
+
+  void _showError(String message) {
+    final snackBar = new SnackBar(
+      content: Text(message, style: TextStyle(fontSize: 17),),
+      duration: Duration(seconds: 5),
+    );
+    mScaffoldState.currentState.showSnackBar(snackBar);
+  }
+
+  Future<String> _getMobileToken() async {
+    final SharedPreferences prefs = await _prefs;
+    return prefs.getString(MOBILE_TOKEN_KEY) ?? '';
+  }
+
 }
