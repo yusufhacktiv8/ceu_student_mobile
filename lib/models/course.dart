@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:ceu_student/models/department.dart';
+import 'package:ceu_student/models/score.dart';
 
 class Course {
   final int id;
@@ -11,6 +12,7 @@ class Course {
   final int portofolioCount;
   final int seminarCount;
   final int problemCount;
+  final List<Score> scores;
 
   Course({
     this.id,
@@ -21,9 +23,11 @@ class Course {
     this.portofolioCount,
     this.seminarCount,
     this.problemCount,
+    this.scores,
   });
 
   static Course fromData(Map<String, dynamic> data){
+    List scores = data['scores'] != null ? data['scores'] : new List();
     return Course(
       id: data['id'],
       department: Department.fromData(data['Department']),
@@ -33,6 +37,7 @@ class Course {
       portofolioCount: data['portofolioCount'],
       seminarCount: data['seminarCount'],
       problemCount: data['problemCount'],
+      scores: Score.fromList(scores),
     );
   }
 
