@@ -39,6 +39,7 @@ class _CoursePageState extends State<CoursePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: mScaffoldState,
         appBar: Header(label: widget.course.title, onSelect: (title) {
 //          logout(title);
         },
