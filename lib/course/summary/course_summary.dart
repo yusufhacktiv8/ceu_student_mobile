@@ -18,11 +18,15 @@ class CourseSummary extends StatelessWidget {
 
     Widget courseStatus = Text('-');
     String sglCount = '-';
+    String portofolioCount = '-';
+    String seminarCount = '-';
     var title = '';
     if (course != null) {
       courseStatus = Status(status: course.status);
       title = course.title;
       sglCount = course.sglCount != null ? fn.format(course.sglCount) : '-';
+      portofolioCount = course.portofolioCount != null ? fn.format(course.portofolioCount) : '-';
+      seminarCount = course.seminarCount != null ? fn.format(course.seminarCount) : '-';
     }
 
     return Container(
@@ -61,7 +65,7 @@ class CourseSummary extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Text('Portofolio', style: TextStyle(fontWeight: FontWeight.bold)),
-                Text("20", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.blue),),
+                Text(portofolioCount, style: TextStyle(fontWeight: FontWeight.bold, color: Colors.blue),),
               ],
             ),
             trailing: Icon(Icons.navigate_next),
@@ -72,7 +76,7 @@ class CourseSummary extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Text('Seminar', style: TextStyle(fontWeight: FontWeight.bold)),
-                Text("20", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.blue),),
+                Text(seminarCount, style: TextStyle(fontWeight: FontWeight.bold, color: Colors.blue),),
               ],
             ),
             trailing: Icon(Icons.navigate_next),

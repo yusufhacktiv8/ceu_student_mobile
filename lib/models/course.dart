@@ -8,6 +8,8 @@ class Course {
   final String title;
   final int status;
   final int sglCount;
+  final int portofolioCount;
+  final int seminarCount;
 
   Course({
     this.id,
@@ -15,6 +17,8 @@ class Course {
     this.title,
     this.status,
     this.sglCount,
+    this.portofolioCount,
+    this.seminarCount,
   });
 
   static Course fromData(Map<String, dynamic> data){
@@ -24,6 +28,8 @@ class Course {
       title: data['title'],
       status: data['status'],
       sglCount: data['sglCount'],
+      portofolioCount: data['portofolioCount'],
+      seminarCount: data['seminarCount'],
     );
   }
 
