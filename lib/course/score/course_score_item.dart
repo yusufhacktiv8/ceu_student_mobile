@@ -33,7 +33,7 @@ class CourseScoreItem extends StatelessWidget {
             ),
           ),
           Container(
-            width: 95,
+            width: 100,
             padding: EdgeInsets.only(left: 10),
             child: Container(
               alignment: Alignment.centerRight,
@@ -44,7 +44,7 @@ class CourseScoreItem extends StatelessWidget {
                   border: Border.all(color: Colors.grey, width: 0.3),
                   borderRadius: BorderRadius.all(Radius.circular(5))),
               child: Text(
-                "$percentage %",
+                fn.format(percentage),
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
             ),

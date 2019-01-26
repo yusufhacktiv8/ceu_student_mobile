@@ -1,7 +1,6 @@
 import 'package:ceu_student/course/score/course_score_item.dart';
 import 'package:flutter/material.dart';
 import 'package:ceu_student/models/course.dart';
-import 'package:ceu_student/models/score.dart';
 
 class CourseScore extends StatelessWidget {
 
@@ -16,21 +15,24 @@ class CourseScore extends StatelessWidget {
 
     double pretest = 0.0;
     double caseReport = 0.0;
+    double caseReportPercentage = 0.0;
+    double weeklyDiscussion = 0.0;
+    double weeklyDiscussionPercentage = 0.0;
+    double caseTest = 0.0;
+    double caseTestPercentage = 0.0;
+    double postTest = 0.0;
+    double postTestPercentage = 0.0;
 
     if (course != null) {
-      List<Score> scores = course.scores;
-      for(var i=0; i<scores.length; i++){
-        Score score = scores[i];
-        switch(score.type.code) {
-          case 'PRETEST':
-            pretest = score.scoreValue;
-            break;
-          case 'CASEREPORT':
-            caseReport = score.scoreValue;
-            break;
-
-        }
-      }
+      pretest = course.pretest;
+      caseReport = course.caseReport;
+      caseReportPercentage = course.caseReportPercentage;
+      weeklyDiscussion = course.weeklyDiscussion;
+      weeklyDiscussionPercentage = course.weeklyDiscussionPercentage;
+      caseTest = course.caseTest;
+      caseTestPercentage = course.caseTestPercentage;
+      postTest = course.postTest;
+      postTestPercentage = course.postTestPercentage;
     }
     return Container(
       child: Column(
@@ -50,7 +52,7 @@ class CourseScore extends StatelessWidget {
 //              style: TextStyle(fontSize: 14),
             ),
             score: caseReport,
-            percentage: caseReport * 0.1,
+            percentage: caseReportPercentage,
           ),
           Divider(),
           CourseScoreItem(
@@ -58,8 +60,8 @@ class CourseScore extends StatelessWidget {
               'Weekly Discussion',
 //              style: TextStyle(fontSize: 14),
             ),
-            score: 89.0,
-            percentage: 17.8,
+            score: weeklyDiscussion,
+            percentage: weeklyDiscussionPercentage,
           ),
           Divider(),
           CourseScoreItem(
@@ -67,8 +69,8 @@ class CourseScore extends StatelessWidget {
               'Case Test',
 //              style: TextStyle(fontSize: 14),
             ),
-            score: 85.0,
-            percentage: 29.75,
+            score: caseTest,
+            percentage: caseTestPercentage,
           ),
           Divider(),
           CourseScoreItem(
@@ -76,8 +78,8 @@ class CourseScore extends StatelessWidget {
               'Post Test',
 //              style: TextStyle(fontSize: 14),
             ),
-            score: 85.0,
-            percentage: 99.99,
+            score: postTest,
+            percentage: postTestPercentage,
           ),
           Divider(),
           CourseScoreItem(
@@ -88,8 +90,8 @@ class CourseScore extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                   color: Colors.green),
             ),
-            score: 386.5,
-            percentage: 100,
+            score: (pretest + caseReport + weeklyDiscussion + caseTest + postTest),
+            percentage: (caseReportPercentage + weeklyDiscussionPercentage + caseTestPercentage + postTestPercentage),
           ),
         ],
       ),
