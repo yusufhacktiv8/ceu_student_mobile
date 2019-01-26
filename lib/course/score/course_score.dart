@@ -1,15 +1,37 @@
 import 'package:ceu_student/course/score/course_score_item.dart';
 import 'package:flutter/material.dart';
-import 'package:badge/badge.dart';
+import 'package:ceu_student/models/course.dart';
+import 'package:ceu_student/models/score.dart';
 
-class CourseScore extends StatefulWidget {
-  @override
-  _CourseScoreState createState() => _CourseScoreState();
-}
+class CourseScore extends StatelessWidget {
 
-class _CourseScoreState extends State<CourseScore> {
+  final Course course;
+
+  CourseScore({Key key,
+    this.course,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
+
+    double pretest = 0.0;
+    double caseReport = 0.0;
+
+    if (course != null) {
+      List<Score> scores = course.scores;
+      for(var i=0; i<scores.length; i++){
+        Score score = scores[i];
+        switch(score.type.code) {
+          case 'PRETEST':
+            pretest = score.scoreValue;
+            break;
+          case 'CASEREPORT':
+            caseReport = score.scoreValue;
+            break;
+
+        }
+      }
+    }
     return Container(
       child: Column(
         children: <Widget>[
@@ -18,7 +40,7 @@ class _CourseScoreState extends State<CourseScore> {
               'Pre Test (SCB)',
 //              style: TextStyle(fontSize: 14),
             ),
-            score: 42.5,
+            score: pretest,
             percentage: 0.00,
           ),
           Divider(),
@@ -27,8 +49,8 @@ class _CourseScoreState extends State<CourseScore> {
               'Case Report',
 //              style: TextStyle(fontSize: 14),
             ),
-            score: 85.00,
-            percentage: 8.5,
+            score: caseReport,
+            percentage: caseReport * 0.1,
           ),
           Divider(),
           CourseScoreItem(

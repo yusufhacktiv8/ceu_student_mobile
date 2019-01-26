@@ -60,7 +60,7 @@ class _CoursePageState extends State<CoursePage> {
             children: <Widget>[
               CourseSummaryCard(course: _course),
               Padding(padding: EdgeInsets.only(bottom: 15)),
-              CourseScoreCard(),
+              CourseScoreCard(course: _course),
               Padding(padding: EdgeInsets.only(bottom: 15)),
               CourseScheduleCard(),
             ],

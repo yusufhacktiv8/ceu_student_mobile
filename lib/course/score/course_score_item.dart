@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class CourseScoreItem extends StatelessWidget {
 
   final Widget name;
   final double score;
   final double percentage;
+  final fn = new NumberFormat("#,###.00");
 
   CourseScoreItem({Key key,
     @required this.name,
@@ -26,7 +28,7 @@ class CourseScoreItem extends StatelessWidget {
             width: 50,
             alignment: Alignment.centerRight,
             child: Text(
-              "$score",
+              fn.format(score),
               style: TextStyle(fontWeight: FontWeight.bold, color: Colors.grey),
             ),
           ),

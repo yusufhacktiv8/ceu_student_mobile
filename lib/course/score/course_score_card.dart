@@ -1,7 +1,15 @@
 import 'package:ceu_student/course/score/course_score.dart';
+import 'package:ceu_student/models/course.dart';
 import 'package:flutter/material.dart';
 
 class CourseScoreCard extends StatelessWidget {
+
+  final Course course;
+
+  CourseScoreCard({Key key,
+    this.course,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -32,7 +40,7 @@ class CourseScoreCard extends StatelessWidget {
           Container(
 //            padding: EdgeInsets.all(10),
 //            height: 250,
-            child: CourseScore(),
+            child: CourseScore(course: course),
           ),
           Container(
             padding: EdgeInsets.all(10),
