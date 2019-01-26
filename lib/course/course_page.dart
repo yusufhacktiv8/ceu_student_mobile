@@ -8,16 +8,7 @@ import 'package:ceu_student/course/summary/course_summary_card.dart';
 import 'package:ceu_student/models/course.dart';
 import 'package:ceu_student/utils/common.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import '../constant.dart';
-import 'package:flutter_circular_chart/flutter_circular_chart.dart';
-import 'package:ceu_student/course/score/course_score.dart';
-import './sgl.dart';
-import './schedules.dart';
-import './scores.dart';
-import './portofolios.dart';
-import './seminars.dart';
-import './problems.dart';
 
 class CoursePage extends StatefulWidget {
   CoursePage({Key key,
