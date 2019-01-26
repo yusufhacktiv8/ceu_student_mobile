@@ -12,6 +12,31 @@ class CourseScoreCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    String classification = 'A';
+    Color color = Colors.black;
+
+    if (course != null) {
+      var totalPercentage = course.totalPercentage;
+
+      if (totalPercentage >= 80 && totalPercentage <= 100) {
+        classification = 'A';
+        color = Colors.blue;
+      } else if (totalPercentage >= 70 && totalPercentage <= 79) {
+        classification = 'B';
+        color = Colors.green;
+      } else if (totalPercentage >= 60 && totalPercentage <= 69) {
+        classification = 'C';
+        color = Colors.orange;
+      } else if (totalPercentage > 0 && totalPercentage <= 59) {
+        classification = 'E';
+        color = Colors.red;
+      } else if (totalPercentage <= 0) {
+        classification = '-';
+        color = Colors.grey;
+      }
+    }
+
     return Container(
 //      height: 365,
       decoration: BoxDecoration(
@@ -64,11 +89,11 @@ class CourseScoreCard extends StatelessWidget {
                   width: 85,
                   alignment: Alignment.center,
                   child: Text(
-                    'A',
+                    classification,
                     style: TextStyle(
                         fontSize: 26,
                         fontWeight: FontWeight.bold,
-                        color: Colors.blue),
+                        color: color),
                   ),
                 )
               ],
