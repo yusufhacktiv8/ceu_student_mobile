@@ -15,6 +15,20 @@ class Course {
   final List<Score> scores;
   final DateTime planStartDate;
   final DateTime planStartDate1;
+  final DateTime planStartDate2;
+  final DateTime planStartDate3;
+  final DateTime planEndDate;
+  final DateTime planEndDate1;
+  final DateTime planEndDate2;
+  final DateTime planEndDate3;
+  final DateTime realStartDate;
+  final DateTime realStartDate1;
+  final DateTime realStartDate2;
+  final DateTime realStartDate3;
+  final DateTime realEndDate;
+  final DateTime realEndDate1;
+  final DateTime realEndDate2;
+  final DateTime realEndDate3;
 
   double pretest = 0.0;
   double caseReport = 0.0;
@@ -39,7 +53,21 @@ class Course {
     this.problemCount,
     this.scores,
     this.planStartDate,
-    this.planStartDate1
+    this.planStartDate1,
+    this.planStartDate2,
+    this.planStartDate3,
+    this.planEndDate,
+    this.planEndDate1,
+    this.planEndDate2,
+    this.planEndDate3,
+    this.realStartDate,
+    this.realStartDate1,
+    this.realStartDate2,
+    this.realStartDate3,
+    this.realEndDate,
+    this.realEndDate1,
+    this.realEndDate2,
+    this.realEndDate3,
   });
 
   static Course fromData(Map<String, dynamic> data){
@@ -56,6 +84,21 @@ class Course {
       problemCount: data['problemCount'],
       planStartDate: data["planStartDate"] != null ? DateTime.parse(data["planStartDate"]) : null,
       planStartDate1: data["planStartDate1"] != null ? DateTime.parse(data["planStartDate1"]) : null,
+      planStartDate2: data["planStartDate2"] != null ? DateTime.parse(data["planStartDate2"]) : null,
+      planStartDate3: data["planStartDate3"] != null ? DateTime.parse(data["planStartDate3"]) : null,
+      planEndDate: data["planEndDate"] != null ? DateTime.parse(data["planEndDate"]) : null,
+      planEndDate1: data["planEndDate1"] != null ? DateTime.parse(data["planEndDate1"]) : null,
+      planEndDate2: data["planEndDate2"] != null ? DateTime.parse(data["planEndDate2"]) : null,
+      planEndDate3: data["planEndDate3"] != null ? DateTime.parse(data["planEndDate3"]) : null,
+
+      realStartDate: data["realStartDate"] != null ? DateTime.parse(data["realStartDate"]) : null,
+      realStartDate1: data["realStartDate1"] != null ? DateTime.parse(data["realStartDate1"]) : null,
+      realStartDate2: data["realStartDate2"] != null ? DateTime.parse(data["realStartDate2"]) : null,
+      realStartDate3: data["realStartDate3"] != null ? DateTime.parse(data["realStartDate3"]) : null,
+      realEndDate: data["realEndDate"] != null ? DateTime.parse(data["realEndDate"]) : null,
+      realEndDate1: data["realEndDate1"] != null ? DateTime.parse(data["realEndDate1"]) : null,
+      realEndDate2: data["realEndDate2"] != null ? DateTime.parse(data["realEndDate2"]) : null,
+      realEndDate3: data["realEndDate3"] != null ? DateTime.parse(data["realEndDate3"]) : null,
       scores: scores,
     );
 
