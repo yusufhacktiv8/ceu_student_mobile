@@ -13,6 +13,8 @@ class Course {
   final int seminarCount;
   final int problemCount;
   final List<Score> scores;
+  final DateTime planStartDate;
+  final DateTime planStartDate1;
 
   double pretest = 0.0;
   double caseReport = 0.0;
@@ -36,6 +38,8 @@ class Course {
     this.seminarCount,
     this.problemCount,
     this.scores,
+    this.planStartDate,
+    this.planStartDate1
   });
 
   static Course fromData(Map<String, dynamic> data){
@@ -50,6 +54,8 @@ class Course {
       portofolioCount: data['portofolioCount'],
       seminarCount: data['seminarCount'],
       problemCount: data['problemCount'],
+      planStartDate: data["planStartDate"] != null ? DateTime.parse(data["planStartDate"]) : null,
+      planStartDate1: data["planStartDate1"] != null ? DateTime.parse(data["planStartDate1"]) : null,
       scores: scores,
     );
 

@@ -1,7 +1,15 @@
 import 'package:ceu_student/course/schedule/course_schedule.dart';
 import 'package:flutter/material.dart';
+import 'package:ceu_student/models/course.dart';
 
 class CourseScheduleCard extends StatelessWidget {
+
+  final Course course;
+
+  CourseScheduleCard({Key key,
+    this.course,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -33,7 +41,7 @@ class CourseScheduleCard extends StatelessWidget {
           Container(
 //            padding: EdgeInsets.all(10),
 //            height: 420,
-            child: CourseSchedule(),
+            child: CourseSchedule(course: course),
           ),
         ],
       ),

@@ -1,12 +1,15 @@
 import 'package:ceu_student/course/schedule/course_schedule_item.dart';
 import 'package:flutter/material.dart';
+import 'package:ceu_student/models/course.dart';
 
-class CourseSchedule extends StatefulWidget {
-  @override
-  _CourseScheduleState createState() => _CourseScheduleState();
-}
+class CourseSchedule extends StatelessWidget {
 
-class _CourseScheduleState extends State<CourseSchedule> {
+  final Course course;
+
+  CourseSchedule({Key key,
+    this.course,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -14,11 +17,15 @@ class _CourseScheduleState extends State<CourseSchedule> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          CourseScheduleItem(title: 'Main'),
+          CourseScheduleItem(
+            title: 'Main',
+            planFrom: course != null ? course.planStartDate : null,
+          ),
           Divider(),
           CourseScheduleItem(
             title: 'Hospital 1',
             description: 'Ibnu Sina',
+            planFrom: course != null ? course.planStartDate1 : null,
             adviser: "-",
             examiner: "-",
           ),

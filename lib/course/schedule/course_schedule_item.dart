@@ -3,6 +3,8 @@ import 'package:intl/intl.dart';
 
 class CourseScheduleItem extends StatelessWidget {
 
+  final NO_DATE_LABEL = 'No Date';
+
   String title;
   String description;
   DateTime planFrom;
@@ -27,16 +29,20 @@ class CourseScheduleItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var descriptionText = description != null ? "($description)" : '';
+    String planFromStr = planFrom != null ? DateFormat('dd MMM yyyy').format(planFrom) : NO_DATE_LABEL;
+    String planToStr = planTo != null ? DateFormat('dd MMM yyyy').format(planTo) : NO_DATE_LABEL;
+    String realFromStr = realFrom != null ? DateFormat('dd MMM yyyy').format(realFrom) : NO_DATE_LABEL;
+    String realToStr = realTo != null ? DateFormat('dd MMM yyyy').format(realTo) : NO_DATE_LABEL;
     var columnItems = [
       Row(
         children: <Widget>[
           Icon(Icons.date_range, size: 13, color: Colors.grey,),
           Padding(padding: EdgeInsets.only(right: 5),),
-          Text("19 Feb 2019", style: TextStyle(fontSize: 14),),
+          Text(planFromStr, style: TextStyle(fontSize: 14),),
           Padding(padding: EdgeInsets.only(right: 5),),
           Icon(Icons.indeterminate_check_box, size: 15, color: Colors.black26,),
           Padding(padding: EdgeInsets.only(right: 5),),
-          Text("19 Feb 2019", style: TextStyle(fontSize: 14),),
+          Text(planToStr, style: TextStyle(fontSize: 14),),
         ],
       ),
       Padding(padding: EdgeInsets.only(bottom: 10),),
@@ -44,11 +50,11 @@ class CourseScheduleItem extends StatelessWidget {
         children: <Widget>[
           Icon(Icons.calendar_today, size: 13, color: Colors.grey,),
           Padding(padding: EdgeInsets.only(right: 5),),
-          Text("19 Feb 2019", style: TextStyle(fontSize: 14),),
+          Text(realFromStr, style: TextStyle(fontSize: 14),),
           Padding(padding: EdgeInsets.only(right: 5),),
           Icon(Icons.indeterminate_check_box, size: 15, color: Colors.black26,),
           Padding(padding: EdgeInsets.only(right: 5),),
-          Text("19 Feb 2019", style: TextStyle(fontSize: 14),),
+          Text(realToStr, style: TextStyle(fontSize: 14),),
         ],
       ),
     ];

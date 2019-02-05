@@ -62,7 +62,7 @@ class _CoursePageState extends State<CoursePage> {
               Padding(padding: EdgeInsets.only(bottom: 15)),
               CourseScoreCard(course: _course),
               Padding(padding: EdgeInsets.only(bottom: 15)),
-              CourseScheduleCard(),
+              CourseScheduleCard(course: _course),
             ],
           ),
         ),
