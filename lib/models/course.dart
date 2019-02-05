@@ -29,6 +29,12 @@ class Course {
   final DateTime realEndDate1;
   final DateTime realEndDate2;
   final DateTime realEndDate3;
+  final String hospital1;
+  final String hospital2;
+  final String clinic;
+  final String adviser;
+  final String examiner;
+  final String dpk;
 
   double pretest = 0.0;
   double caseReport = 0.0;
@@ -68,6 +74,12 @@ class Course {
     this.realEndDate1,
     this.realEndDate2,
     this.realEndDate3,
+    this.adviser,
+    this.examiner,
+    this.dpk,
+    this.hospital1,
+    this.hospital2,
+    this.clinic,
   });
 
   static Course fromData(Map<String, dynamic> data){
@@ -99,6 +111,12 @@ class Course {
       realEndDate1: data["realEndDate1"] != null ? DateTime.parse(data["realEndDate1"]) : null,
       realEndDate2: data["realEndDate2"] != null ? DateTime.parse(data["realEndDate2"]) : null,
       realEndDate3: data["realEndDate3"] != null ? DateTime.parse(data["realEndDate3"]) : null,
+      adviser: data['adviser'],
+      examiner: data['examiner'],
+      dpk: data['dpk'],
+      hospital1: data['hospital1'],
+      hospital2: data['hospital2'],
+      clinic: data['clinic'],
       scores: scores,
     );
 
