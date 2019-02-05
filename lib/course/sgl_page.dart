@@ -64,8 +64,8 @@ class _SglPageState extends State<SglPage> {
       );
     }
     return Scaffold(
-      appBar: Header(label: widget.title, onSelect: (title) {
-//          logout(title);
+      appBar: Header(label: widget.title, onSelect: (choice) {
+        onSelectChoice(choice);
       },
         leading: IconButton(
             icon: Icon(Icons.arrow_back_ios, color: Colors.blueAccent, size: 25),
@@ -120,5 +120,15 @@ class _SglPageState extends State<SglPage> {
       showError(mScaffoldState, 'Error finding courses');
     }
     return null;
+  }
+
+  onSelectChoice(choice) {
+    switch (choice.title) {
+      case 'Profile':
+        profile(context);
+        break;
+      default:
+        logout(context);
+    }
   }
 }

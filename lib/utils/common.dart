@@ -1,4 +1,5 @@
 import 'package:ceu_student/security/login_page.dart';
+import 'package:ceu_student/profile/profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../constant.dart';
@@ -47,6 +48,13 @@ void showError(GlobalKey<ScaffoldState> mScaffoldState, String message) {
     duration: Duration(seconds: 4),
   );
   mScaffoldState.currentState.showSnackBar(snackBar);
+}
+
+void profile(BuildContext context) {
+  Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => ProfilePage()),
+  );
 }
 
 void logout(BuildContext context) {

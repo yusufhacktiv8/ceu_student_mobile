@@ -40,8 +40,8 @@ class _CoursePageState extends State<CoursePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: mScaffoldState,
-        appBar: Header(label: widget.course.title, onSelect: (title) {
-//          logout(title);
+        appBar: Header(label: widget.course.title, onSelect: (choice) {
+          onSelectChoice(choice);
         },
           leading: IconButton(
             icon: Icon(Icons.arrow_back_ios, color: Colors.blueAccent, size: 25),
@@ -94,5 +94,15 @@ class _CoursePageState extends State<CoursePage> {
       showError(mScaffoldState, 'Error finding courses');
     }
     return null;
+  }
+
+  onSelectChoice(choice) {
+    switch (choice.title) {
+      case 'Profile':
+        profile(context);
+        break;
+      default:
+        logout(context);
+    }
   }
 }

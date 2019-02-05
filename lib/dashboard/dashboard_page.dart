@@ -155,11 +155,7 @@ class _DashboardPageState extends State<DashboardPage> {
   onSelectChoice(choice) {
     switch (choice.title) {
       case 'Profile':
-        setMobileToken('');
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => ProfilePage()),
-        );
+        profile(context);
         break;
       default:
         logout(context);
