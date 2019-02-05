@@ -7,6 +7,7 @@ import 'package:ceu_student/components/header.dart';
 import 'package:ceu_student/utils/common.dart';
 import '../constant.dart';
 import '../models/course.dart';
+import 'package:intl/intl.dart';
 
 class SglPage extends StatefulWidget {
 
@@ -45,15 +46,18 @@ class _SglPageState extends State<SglPage> {
     );
 
     if (sgls.length > 0) {
-      sglWidget = ListView.builder
+      sglWidget = ListView.separated
         (
+          separatorBuilder: (context, index) => Divider(
+            color: Colors.grey,
+          ),
           itemCount: sgls.length,
           itemBuilder: (BuildContext ctxt, int index) {
             return ListTile(
-              leading: Icon(Icons.check_box, color: Colors.blue, size: 35,),
+              leading: Icon(sgls[index].completed ? Icons.check_box : Icons.check_box_outline_blank, color: Colors.blue, size: 35,),
               title: Text(sgls[index].name,
                   style: TextStyle(fontSize: 16)),
-              trailing: Text("29/12/2018",
+              trailing: Text(sgls[index].sglDate != null ? DateFormat('dd MMM yyyy').format(sgls[index].sglDate) : 'No Date',
                 style: TextStyle(fontWeight: FontWeight.bold, color: Colors.grey),),
             );
           }
