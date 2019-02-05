@@ -1,6 +1,7 @@
 import 'package:ceu_student/components/status.dart';
 import 'package:ceu_student/course/sgl_page.dart';
 import 'package:ceu_student/course/portofolio_page.dart';
+import 'package:ceu_student/course/seminar_page.dart';
 import 'package:ceu_student/models/course.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -81,6 +82,12 @@ class CourseSummary extends StatelessWidget {
           ),
           Divider(),
           ListTile(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => SeminarPage(course: course, title: title,)),
+              );
+            },
             title: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
