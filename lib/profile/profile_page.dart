@@ -2,6 +2,7 @@ import 'dart:io';
 import 'dart:async';
 import 'dart:convert';
 import 'package:ceu_student/models/student.dart';
+import 'package:ceu_student/profile/change_password.dart';
 import 'package:flutter/material.dart';
 import 'package:ceu_student/utils/common.dart';
 import '../constant.dart';
@@ -109,10 +110,18 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
               ),
               Container(color: Color(0xFFF5F5F5), height: 35,),
-              Container(color: Colors.white, height: 45,
+              InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ChangePassword()),
+                  );
+                },
+                child: Container(color: Colors.white, height: 45,
                   alignment: Alignment.center,
 //                padding: EdgeInsets.all(15),
-                  child: Text('Change Password', style: TextStyle(color: Colors.red),)
+                  child: Text('Change Password', style: TextStyle(color: Colors.red),),
+                ),
               ),
               Divider(),
               Container(color: Colors.white, height: 45,

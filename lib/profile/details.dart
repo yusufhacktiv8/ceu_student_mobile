@@ -72,19 +72,19 @@ class _DetailsState extends State<Details> {
                     Divider(),
                     ListTile(
                       leading: Icon(Icons.phone),
-                      title: Text("012345678",
+                      title: Text(_student.phone != null ? _student.phone : '-',
                           style: TextStyle(fontSize: 16)),
                     ),
                     Divider(),
                     ListTile(
                       leading: Icon(Icons.email),
-                      title: Text("testhello99@gmail.com",
+                      title: Text(_student.email != null ? _student.email : '-',
                           style: TextStyle(fontSize: 16)),
                     ),
                     Divider(),
                     ListTile(
                       leading: Icon(Icons.home),
-                      title: Text("Jl. A.P.Pettarani",
+                      title: Text(_student.address != null ? _student.address : '-',
                           style: TextStyle(fontSize: 16)),
                     ),
                     Divider(),
