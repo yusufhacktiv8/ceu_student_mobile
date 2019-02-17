@@ -125,10 +125,15 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
               ),
               Divider(),
-              Container(color: Colors.white, height: 45,
+              InkWell(
+                onTap: () {
+                  logout(context);
+                },
+                child: Container(color: Colors.white, height: 45,
                   alignment: Alignment.center,
 //                padding: EdgeInsets.all(15),
-                  child: Text('Logout', style: TextStyle(color: Colors.blue),)
+                  child: Text('Logout', style: TextStyle(color: Colors.blue),),
+                ),
               ),
               Container(color: Color(0xFFF5F5F5), height: 45,),
             ],
