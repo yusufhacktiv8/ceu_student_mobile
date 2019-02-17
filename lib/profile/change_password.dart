@@ -157,7 +157,7 @@ class _ChangePasswordState extends State<ChangePassword> {
     try {
       String token = await getMobileToken();
       var httpClient = new HttpClient();
-      var request = await httpClient.putUrl(Uri.parse('$URL/studentapp/changepassword'));
+      var request = await httpClient.putUrl(Uri.parse('$URL/studentapp/profile/changepassword'));
       request.headers.set('Authorization', 'Bearer $token');
       request.headers.set('content-type', 'application/json');
       Map map = {

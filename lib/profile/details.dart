@@ -35,6 +35,7 @@ class _DetailsState extends State<Details> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: mScaffoldState,
       appBar: AppBar(
           backgroundColor: Colors.white,
           elevation: 0.0,

@@ -45,6 +45,7 @@ class _ProfilePageState extends State<ProfilePage> {
     }
     
     return Scaffold(
+      key: mScaffoldState,
         appBar: AppBar(
           backgroundColor: Colors.white,
           elevation: 0.0,
