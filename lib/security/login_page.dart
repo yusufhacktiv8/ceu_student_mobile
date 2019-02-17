@@ -140,11 +140,20 @@ class _LoginPageState extends State<LoginPage> {
           MaterialPageRoute(builder: (context) => DashboardPage()),
         );
       } else if (response.statusCode == HttpStatus.forbidden) {
+        setState(() {
+          loading = false;
+        });
         _showDialog("Invalid Credentials");
       } else {
+        setState(() {
+          loading = false;
+        });
         _showDialog("Connection Error");
       }
     } catch (exception) {
+      setState(() {
+        loading = false;
+      });
       _showDialog("Connection Error");
     }
   }

@@ -3,6 +3,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:ceu_student/utils/common.dart';
+import '../components/round_button.dart';
 import '../constant.dart';
 
 class ChangePassword extends StatefulWidget {
@@ -21,14 +22,15 @@ class _PasswordData {
 
 class _ChangePasswordState extends State<ChangePassword> {
 
-  final _formKey = GlobalKey<FormState>();
-  _PasswordData _data = new _PasswordData();
-
   final GlobalKey<ScaffoldState> mScaffoldState = new GlobalKey<
       ScaffoldState>();
   final GlobalKey<
       RefreshIndicatorState> _refreshIndicatorKeyProfilePage = GlobalKey<
       RefreshIndicatorState>();
+
+  final _formKey = GlobalKey<FormState>();
+  _PasswordData _data = new _PasswordData();
+  bool loading = false;
 
   @override
   void initState() {
@@ -41,6 +43,7 @@ class _ChangePasswordState extends State<ChangePassword> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: mScaffoldState,
       appBar: AppBar(
           backgroundColor: Colors.white,
           elevation: 0.0,
@@ -68,7 +71,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   TextFormField(
-                    style: TextStyle(fontSize: 15),
+                    style: TextStyle(fontSize: 15, color: Colors.black),
                       obscureText: true,
                       decoration: InputDecoration(
                         hintText: "Current Password",
@@ -84,7 +87,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                   ),
                   Padding(padding: EdgeInsets.only(bottom: 20),),
                   TextFormField(
-                      style: TextStyle(fontSize: 15),
+                      style: TextStyle(fontSize: 15, color: Colors.black),
                       obscureText: true,
                       decoration: InputDecoration(
                         hintText: "New Password",
@@ -100,7 +103,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                   ),
                   Padding(padding: EdgeInsets.only(bottom: 20),),
                   TextFormField(
-                      style: TextStyle(fontSize: 15),
+                      style: TextStyle(fontSize: 15, color: Colors.black),
                       obscureText: true,
                       decoration: InputDecoration(
                         hintText: "Retype New Password",
@@ -114,34 +117,21 @@ class _ChangePasswordState extends State<ChangePassword> {
                         this._data.newPassword2 = value;
                       }
                   ),
-                  Padding(padding: EdgeInsets.only(bottom: 20),),
-                  Center(
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 19.0),
-                      child: RaisedButton(
-                        shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0)),
-                        color: Colors.red,
-                        onPressed: () {
-                          // Validate will return true if the form is valid, or false if
-                          // the form is invalid.
-                          if (_formKey.currentState.validate()) {
-                            // If the form is valid, we want to show a Snackbar
-                            _formKey.currentState.save();
-                            if (_data.newPassword == _data.newPassword2) {
-                              Scaffold.of(context)
-                                  .showSnackBar(
-                                  SnackBar(content: Text('Processing Data')));
-                              changePassword(_data.currentPassword, _data.newPassword);
-                            } else {
-                              Scaffold.of(context)
-                                  .showSnackBar(SnackBar(content: Text(
-                                  'New password is not same with retype password')));
-                            }
+                  Padding(padding: EdgeInsets.only(bottom: 40),),
+                  RoundButton(
+                      loading: loading,
+                      label: "Submit",
+                      radius: 40.0,
+                      onClick: () {
+                        if (_formKey.currentState.validate()) {
+                          _formKey.currentState.save();
+                          if (_data.newPassword == _data.newPassword2) {
+                            changePassword(_data.currentPassword, _data.newPassword);
+                          } else {
+                            showError(mScaffoldState, 'New password is not same with retype password');
                           }
-                        },
-                        child: Text('Submit', style: TextStyle(color: Colors.white, fontSize: 16),),
-                      ),
-                    ),
+                        }
+                      }
                   ),
                 ],
               ),
@@ -155,6 +145,9 @@ class _ChangePasswordState extends State<ChangePassword> {
 
   Future<void> changePassword(String _currentPassword, String _newPassword) async{
     try {
+      setState(() {
+        loading = true;
+      });
       String token = await getMobileToken();
       var httpClient = new HttpClient();
       var request = await httpClient.putUrl(Uri.parse('$URL/studentapp/profile/changepassword'));
@@ -168,13 +161,25 @@ class _ChangePasswordState extends State<ChangePassword> {
       var response = await request.close();
       if (response.statusCode == HttpStatus.ok) {
         _formKey.currentState.reset();
+        setState(() {
+          loading = false;
+        });
         logout(context);
       } else if (response.statusCode == HttpStatus.forbidden) {
-        showLoginError(mScaffoldState, context, 'Session Expired');
+        setState(() {
+          loading = false;
+        });
+        showLoginError(mScaffoldState, context, 'Security Error');
       } else {
+        setState(() {
+          loading = false;
+        });
         showError(mScaffoldState, 'Error change password');
       }
     } catch (exception) {
+      setState(() {
+        loading = false;
+      });
       showError(mScaffoldState, 'Error change password');
     }
   }
