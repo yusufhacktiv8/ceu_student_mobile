@@ -33,6 +33,15 @@ class _ProfilePageState extends State<ProfilePage> {
 
   @override
   Widget build(BuildContext context) {
+
+    var _sid = '';
+    if (_student.oldSid != null && _student.newSid != null) {
+      _sid = '${_student.oldSid} - ${_student.newSid}';
+    } else if (_student.oldSid != null) {
+      _sid = _student.oldSid;
+    }  else if (_student.newSid != null) {
+      _sid = _student.newSid;
+    }
     
     return Scaffold(
         appBar: AppBar(
@@ -84,7 +93,7 @@ class _ProfilePageState extends State<ProfilePage> {
               Container(color: Colors.white, height: 40,
                   alignment: Alignment.centerLeft,
                   padding: EdgeInsets.all(15),
-                  child: Text('110 2014 0118 - 111 2017 2120')
+                  child: Text(_sid)
               ),
               Container(color: Color(0xFFF5F5F5), height: 35,),
               Container(

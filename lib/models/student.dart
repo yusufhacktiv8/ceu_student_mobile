@@ -1,14 +1,20 @@
 import 'dart:convert';
 
 class Student {
+  final String oldSid;
+  final String newSid;
   final String name;
 
   Student({
+    this.oldSid,
+    this.newSid,
     this.name,
   });
 
   static Student fromData(Map<String, dynamic> data){
     return Student(
+      oldSid: data["oldSid"],
+      newSid: data["newSid"],
       name: data["name"],
     );
   }
