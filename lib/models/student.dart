@@ -4,11 +4,15 @@ class Student {
   final String oldSid;
   final String newSid;
   final String name;
+  final String mobilePhone;
+  final DateTime birthDate;
 
   Student({
     this.oldSid,
     this.newSid,
     this.name,
+    this.mobilePhone,
+    this.birthDate,
   });
 
   static Student fromData(Map<String, dynamic> data){
@@ -16,6 +20,8 @@ class Student {
       oldSid: data["oldSid"],
       newSid: data["newSid"],
       name: data["name"],
+      mobilePhone: data["mobilePhone"],
+      birthDate: data["birthDate"] != null ? DateTime.parse(data["birthDate"]) : null,
     );
   }
 
