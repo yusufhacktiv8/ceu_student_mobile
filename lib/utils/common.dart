@@ -52,10 +52,10 @@ void showError(GlobalKey<ScaffoldState> mScaffoldState, String message) {
   mScaffoldState.currentState.showSnackBar(snackBar);
 }
 
-void profile(BuildContext context) {
+void profile(BuildContext context, String userPhoto) {
   Navigator.push(
     context,
-    MaterialPageRoute(builder: (context) => ProfilePage()),
+    MaterialPageRoute(builder: (context) => ProfilePage(userPhoto: userPhoto)),
   );
 }
 

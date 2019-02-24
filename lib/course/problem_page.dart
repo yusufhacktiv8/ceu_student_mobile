@@ -126,7 +126,7 @@ class _ProblemPageState extends State<ProblemPage> {
   onSelectChoice(choice) {
     switch (choice.title) {
       case 'Profile':
-        profile(context);
+        profile(context, widget.userPhoto);
         break;
       default:
         logout(context);

@@ -158,7 +158,7 @@ class _DashboardPageState extends State<DashboardPage> {
   onSelectChoice(choice) {
     switch (choice.title) {
       case 'Profile':
-        profile(context);
+        profile(context, widget.userPhoto);
         break;
       default:
         logout(context);

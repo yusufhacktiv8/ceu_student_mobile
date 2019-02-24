@@ -127,7 +127,7 @@ class _SeminarPageState extends State<SeminarPage> {
   onSelectChoice(choice) {
     switch (choice.title) {
       case 'Profile':
-        profile(context);
+        profile(context, widget.userPhoto);
         break;
       default:
         logout(context);

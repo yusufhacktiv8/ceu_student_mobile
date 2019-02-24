@@ -9,9 +9,10 @@ import '../constant.dart';
 import 'package:ceu_student/profile/details.dart';
 
 class ProfilePage extends StatefulWidget {
-  ProfilePage({Key key, this.title}) : super(key: key);
+  ProfilePage({Key key, this.title, this.userPhoto}) : super(key: key);
 
   final String title;
+  final String userPhoto;
 
   @override
   _ProfilePageState createState() => new _ProfilePageState();
@@ -72,7 +73,18 @@ class _ProfilePageState extends State<ProfilePage> {
                 height: 120,
                 padding: EdgeInsets.all(10),
                 child: Center(
-                  child: Icon(Icons.account_circle, color: Colors.black12, size: 100,)
+                  // child: Icon(Icons.account_circle, color: Colors.black12, size: 100,)
+                  child: ClipRRect(
+                          borderRadius: BorderRadius.circular(60),
+                          child: FadeInImage(
+                            fit: BoxFit.cover,
+                            placeholder: AssetImage(
+                              'images/user.png',
+                            ),
+                            // image: NetworkImage('https://picsum.photos/250?image=9'),
+                            image: NetworkImage(widget.userPhoto),
+                          ),
+                        )
                 ),
               ),
               Container(color: Color(0xFFF5F5F5), height: 35,),
