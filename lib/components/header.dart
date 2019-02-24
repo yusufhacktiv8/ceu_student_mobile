@@ -36,7 +36,7 @@ class Header extends AppBar {
             child: ClipRRect(
                           borderRadius: BorderRadius.circular(35),
                           child: FadeInImage(
-                            fit: BoxFit.cover,
+                            fit: BoxFit.fill,
                             placeholder: AssetImage(
                               'images/user.png',
                             ),
