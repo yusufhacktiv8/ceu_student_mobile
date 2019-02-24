@@ -25,20 +25,23 @@ class Header extends AppBar {
       backgroundColor: Colors.white,
       elevation: 0.0,
       actions: <Widget>[
-          PopupMenuButton<Choice>(
+        Container(
+          padding: EdgeInsets.only(bottom: 10),
+          child: PopupMenuButton<Choice>(
             onSelected: (choice) {
               onSelect(choice);
             },
-            child: Container(
-              margin: EdgeInsets.only(right: 8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  Icon(Icons.account_circle, color: Colors.black12, size: 50,)
-                ],
-              ),
-            ),
+            child: ClipRRect(
+                          borderRadius: BorderRadius.circular(35),
+                          child: FadeInImage(
+                            fit: BoxFit.cover,
+                            placeholder: AssetImage(
+                              'images/user.png',
+                            ),
+                            image: NetworkImage(
+                                'https://picsum.photos/250?image=9'),
+                          ),
+                        ),
             itemBuilder: (BuildContext context) {
               return choices.map((Choice choice) {
                 return PopupMenuItem<Choice>(
@@ -48,6 +51,10 @@ class Header extends AppBar {
               }).toList();
             },
           ),
+        ),
+        Padding(
+          padding: EdgeInsets.only(right: 10),
+        ),
         ]
   );
 
