@@ -5,9 +5,11 @@ import 'package:flutter/material.dart';
 class CourseSummaryCard extends StatelessWidget {
 
   final Course course;
+  final String userPhoto;
 
   CourseSummaryCard({Key key,
     this.course,
+    this.userPhoto
   }) : super(key: key);
 
   @override
@@ -40,7 +42,7 @@ class CourseSummaryCard extends StatelessWidget {
           Container(
 //            padding: EdgeInsets.all(10),
 //            height: 345,
-            child: CourseSummary(course: course),
+            child: CourseSummary(userPhoto: userPhoto, course: course),
           ),
         ],
       ),

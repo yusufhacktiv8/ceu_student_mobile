@@ -9,9 +9,11 @@ import '../models/course.dart';
 class CourseList extends StatelessWidget {
 
   final List<Course> courses;
+  final String userPhoto;
 
   CourseList({Key key,
     @required this.courses,
+    this.userPhoto
   }) : super(key: key);
 
   @override
@@ -26,7 +28,7 @@ class CourseList extends StatelessWidget {
                 onTap: () {
                   Navigator.push(
                     context,
-                  MaterialPageRoute(builder: (context) => CoursePage(course: course)),
+                  MaterialPageRoute(builder: (context) => CoursePage(userPhoto: userPhoto, course: course)),
 //                    MaterialPageRoute(builder: (context) => ScorePage()),
                   );
                 },

@@ -11,9 +11,11 @@ class CourseSummary extends StatelessWidget {
   final fn = new NumberFormat("#,###");
 
   final Course course;
+  final String userPhoto;
 
   CourseSummary({Key key,
     this.course,
+    this.userPhoto
   }) : super(key: key);
 
   @override
@@ -52,7 +54,7 @@ class CourseSummary extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => SglPage(course: course, title: title,)),
+                MaterialPageRoute(builder: (context) => SglPage(userPhoto: userPhoto, course: course, title: title,)),
               );
             },
             title: Row(

@@ -14,8 +14,9 @@ class SglPage extends StatefulWidget {
   final String title;
   final Course course;
   final String departmentCode;
+  final String userPhoto;
 
-  SglPage({Key key, this.title, this.course, this.departmentCode}) : super(key: key);
+  SglPage({Key key, this.title, this.course, this.departmentCode, this.userPhoto}) : super(key: key);
 
   @override
   _SglPageState createState() => _SglPageState();
@@ -64,7 +65,7 @@ class _SglPageState extends State<SglPage> {
       );
     }
     return Scaffold(
-      appBar: Header(label: widget.title, onSelect: (choice) {
+      appBar: Header(label: widget.title, userPhoto: widget.userPhoto, onSelect: (choice) {
         onSelectChoice(choice);
       },
         leading: IconButton(

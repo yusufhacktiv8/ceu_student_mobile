@@ -118,7 +118,7 @@ class _DashboardPageState extends State<DashboardPage> {
                       color: Colors.white,
                       child: Text("Courses", style: TextStyle(fontSize: 17.0, fontWeight: FontWeight.bold, color: Colors.black87),),
                     ),
-                    CourseList(courses: courses),
+                    CourseList(userPhoto: widget.userPhoto, courses: courses),
                   ],),
                 ),
               ),

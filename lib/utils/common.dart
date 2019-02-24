@@ -19,17 +19,6 @@ Future<bool> setMobileToken(String token) async {
   return prefs.setString(MOBILE_TOKEN_KEY, token);
 }
 
-Future<String> getUserPhoto() async {
-  final SharedPreferences prefs = await _prefs;
-  return prefs.getString(USER_PHOTO_KEY) ?? '';
-}
-
-Future<bool> setUserPhoto(String photo) async {
-  final SharedPreferences prefs = await _prefs;
-
-  return prefs.setString(USER_PHOTO_KEY, photo);
-}
-
 void showLoginError(GlobalKey<ScaffoldState> mScaffoldState, BuildContext context, String message) {
   final snackBar = new SnackBar(
     content: Container(

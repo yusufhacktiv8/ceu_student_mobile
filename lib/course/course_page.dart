@@ -13,9 +13,11 @@ import '../constant.dart';
 class CoursePage extends StatefulWidget {
   CoursePage({Key key,
     this.course,
+    this.userPhoto
   }) : super(key: key);
 
   final Course course;
+  final String userPhoto;
 
   @override
   _CoursePageState createState() => new _CoursePageState();
@@ -26,7 +28,6 @@ class _CoursePageState extends State<CoursePage> {
   Course _course = new Course();
   final GlobalKey<ScaffoldState> mScaffoldState = new GlobalKey<ScaffoldState>();
   final GlobalKey<RefreshIndicatorState> _refreshIndicatorKeyCoursePage = GlobalKey<RefreshIndicatorState>();
-  String userPhoto = '';
 
   @override
   void initState() {
@@ -34,9 +35,6 @@ class _CoursePageState extends State<CoursePage> {
 //    findCourses();
     Future.delayed(const Duration(milliseconds: 500), () {
       _refreshIndicatorKeyCoursePage.currentState?.show();
-      getUserPhoto().then((onValue){
-        userPhoto = onValue;
-      });
     });
   }
 
@@ -44,7 +42,7 @@ class _CoursePageState extends State<CoursePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: mScaffoldState,
-        appBar: Header(label: widget.course.title, userPhoto: userPhoto, onSelect: (choice) {
+        appBar: Header(label: widget.course.title, userPhoto: widget.userPhoto, onSelect: (choice) {
           onSelectChoice(choice);
         },
           leading: IconButton(
@@ -62,7 +60,7 @@ class _CoursePageState extends State<CoursePage> {
           onRefresh: findCourse,
           child: ListView(
             children: <Widget>[
-              CourseSummaryCard(course: _course),
+              CourseSummaryCard(userPhoto: widget.userPhoto, course: _course),
               Padding(padding: EdgeInsets.only(bottom: 15)),
               CourseScoreCard(course: _course),
               Padding(padding: EdgeInsets.only(bottom: 15)),
