@@ -71,7 +71,7 @@ class CourseSummary extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => PortofolioPage(course: course, title: title,)),
+                MaterialPageRoute(builder: (context) => PortofolioPage(userPhoto: userPhoto, course: course, title: title,)),
               );
             },
             title: Row(
@@ -88,7 +88,7 @@ class CourseSummary extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => SeminarPage(course: course, title: title,)),
+                MaterialPageRoute(builder: (context) => SeminarPage(userPhoto: userPhoto, course: course, title: title,)),
               );
             },
             title: Row(
@@ -105,7 +105,7 @@ class CourseSummary extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => ProblemPage(course: course, title: title,)),
+                MaterialPageRoute(builder: (context) => ProblemPage(userPhoto: userPhoto, course: course, title: title,)),
               );
             },
             title: Row(

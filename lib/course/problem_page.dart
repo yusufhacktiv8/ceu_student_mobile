@@ -14,8 +14,9 @@ class ProblemPage extends StatefulWidget {
   final String title;
   final Course course;
   final String departmentCode;
+  final String userPhoto;
 
-  ProblemPage({Key key, this.title, this.course, this.departmentCode}) : super(key: key);
+  ProblemPage({Key key, this.title, this.course, this.departmentCode, this.userPhoto}) : super(key: key);
 
   @override
   _ProblemPageState createState() => _ProblemPageState();
@@ -64,7 +65,7 @@ class _ProblemPageState extends State<ProblemPage> {
       );
     }
     return Scaffold(
-      appBar: Header(label: widget.title, onSelect: (choice) {
+      appBar: Header(label: widget.title, userPhoto: widget.userPhoto, onSelect: (choice) {
           onSelectChoice(choice);
       },
         leading: IconButton(
