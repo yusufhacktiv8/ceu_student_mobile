@@ -10,12 +10,14 @@ class Header extends AppBar {
   final label;
   final onSelect;
   final leading;
+  var userPhoto;
 
   Header({
     Key key,
     @required this.label,
     this.onSelect,// named parameter
     this.leading,
+    this.userPhoto,
   }) : super(key: key,
       centerTitle: true,
       leading: leading,
@@ -38,8 +40,8 @@ class Header extends AppBar {
                             placeholder: AssetImage(
                               'images/user.png',
                             ),
-                            image: NetworkImage(
-                                'https://picsum.photos/250?image=9'),
+                            // image: NetworkImage('https://picsum.photos/250?image=9'),
+                            image: NetworkImage(userPhoto),
                           ),
                         ),
             itemBuilder: (BuildContext context) {

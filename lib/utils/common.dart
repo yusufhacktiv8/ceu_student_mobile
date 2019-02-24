@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:ceu_student/security/login_page.dart';
 import 'package:ceu_student/profile/profile_page.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +17,17 @@ Future<bool> setMobileToken(String token) async {
   final SharedPreferences prefs = await _prefs;
 
   return prefs.setString(MOBILE_TOKEN_KEY, token);
+}
+
+Future<String> getUserPhoto() async {
+  final SharedPreferences prefs = await _prefs;
+  return prefs.getString(USER_PHOTO_KEY) ?? '';
+}
+
+Future<bool> setUserPhoto(String photo) async {
+  final SharedPreferences prefs = await _prefs;
+
+  return prefs.setString(USER_PHOTO_KEY, photo);
 }
 
 void showLoginError(GlobalKey<ScaffoldState> mScaffoldState, BuildContext context, String message) {
@@ -64,3 +77,37 @@ void logout(BuildContext context) {
     MaterialPageRoute(builder: (context) => LoginPage()),
   );
 }
+
+Map<String, dynamic> parseJwt(String token) {
+    final parts = token.split('.');
+    if (parts.length != 3) {
+      throw Exception('invalid token');
+    }
+
+    final payload = _decodeBase64(parts[1]);
+    final payloadMap = json.decode(payload);
+    if (payloadMap is! Map<String, dynamic>) {
+      throw Exception('invalid payload');
+    }
+
+    return payloadMap;
+  }
+
+  String _decodeBase64(String str) {
+    String output = str.replaceAll('-', '+').replaceAll('_', '/');
+
+    switch (output.length % 4) {
+      case 0:
+        break;
+      case 2:
+        output += '==';
+        break;
+      case 3:
+        output += '=';
+        break;
+      default:
+        throw Exception('Illegal base64url string!"');
+    }
+
+    return utf8.decode(base64Url.decode(output));
+  }

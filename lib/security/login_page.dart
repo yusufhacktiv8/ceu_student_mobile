@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:io';
 import 'dart:async';
 import 'dart:convert';
+import 'package:ceu_student/utils/common.dart';
 import '../components/input_field.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../components/round_button.dart';
@@ -130,14 +131,16 @@ class _LoginPageState extends State<LoginPage> {
         var dataString = await response.transform(utf8.decoder).join();
         var data = json.decode(dataString);
         var token = data["token"];
-        await _setMobileToken(token);
+        var jwt = parseJwt(token);
+        var photo = jwt['photo'];
+        await setMobileToken(token);
         _formKey.currentState.reset();
         setState(() {
           loading = false;
         });
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => DashboardPage()),
+          MaterialPageRoute(builder: (context) => DashboardPage(userPhoto: photo)),
         );
       } else if (response.statusCode == HttpStatus.forbidden) {
         setState(() {
@@ -156,12 +159,6 @@ class _LoginPageState extends State<LoginPage> {
       });
       _showDialog("Connection Error");
     }
-  }
-
-  Future<bool> _setMobileToken(String token) async {
-    final SharedPreferences prefs = await _prefs;
-
-    return prefs.setString(MOBILE_TOKEN_KEY, token);
   }
 
   void _showDialog(String message) {

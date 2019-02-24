@@ -1,5 +1,4 @@
 import 'package:ceu_student/events/events.dart';
-import 'package:ceu_student/profile/profile_page.dart';
 import 'package:ceu_student/utils/common.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
@@ -13,8 +12,12 @@ import '../models/course.dart';
 
 class DashboardPage extends StatefulWidget {
 
+  final String userPhoto;
+  DashboardPage({Key key, this.userPhoto}) : super(key: key);
+
   @override
   _DashboardPageState createState() => new _DashboardPageState();
+  
 
 }
 
@@ -44,7 +47,7 @@ class _DashboardPageState extends State<DashboardPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: mScaffoldState,
-        appBar: Header(label: 'Dashboard', onSelect: (choice) {
+        appBar: Header(label: 'Dashboard', userPhoto: widget.userPhoto, onSelect: (choice) {
           onSelectChoice(choice);
         },
 //          leading: Icon(Icons.chat, color: Colors.blueAccent, size: 30,),
