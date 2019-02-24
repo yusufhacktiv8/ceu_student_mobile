@@ -26,9 +26,11 @@ class CourseSummary extends StatelessWidget {
     String portofolioCount = '-';
     String seminarCount = '-';
     String problemCount = '-';
+    Widget problemDescription;
     var title = '';
     if (course != null) {
       courseStatus = Status(status: course.status);
+      problemDescription = course.problemDescription != null && course.problemDescription.trim().length > 0 ? Text(course.problemDescription): null;
       title = course.title;
       sglCount = course.sglCount != null ? fn.format(course.sglCount) : '-';
       portofolioCount = course.portofolioCount != null ? fn.format(course.portofolioCount) : '-';
@@ -48,6 +50,7 @@ class CourseSummary extends StatelessWidget {
               ],
             ),
             trailing: courseStatus,
+            subtitle: problemDescription,
           ),
           Divider(),
           ListTile(

@@ -8,6 +8,7 @@ class Course {
   final Department department;
   final String title;
   final int status;
+  final String problemDescription;
   final int sglCount;
   final int portofolioCount;
   final int seminarCount;
@@ -53,6 +54,7 @@ class Course {
     this.department,
     this.title,
     this.status,
+    this.problemDescription,
     this.sglCount,
     this.portofolioCount,
     this.seminarCount,
@@ -90,6 +92,7 @@ class Course {
       department: Department.fromData(data['Department']),
       title: data['title'],
       status: data['status'],
+      problemDescription: data['problemDescription'],
       sglCount: data['sglCount'],
       portofolioCount: data['portofolioCount'],
       seminarCount: data['seminarCount'],
