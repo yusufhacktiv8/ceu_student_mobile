@@ -133,6 +133,8 @@ class _LoginPageState extends State<LoginPage> {
         var token = data["token"];
         var jwt = parseJwt(token);
         var photo = jwt['photo'];
+        var userId = jwt['userId'];
+        var userPhoto = "https://s3-ap-southeast-1.amazonaws.com/ceufkumifiles/users/$userId/photos/${photo}.jpg";
         await setMobileToken(token);
         _formKey.currentState.reset();
         setState(() {
@@ -140,7 +142,7 @@ class _LoginPageState extends State<LoginPage> {
         });
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => DashboardPage(userPhoto: photo)),
+          MaterialPageRoute(builder: (context) => DashboardPage(userPhoto: userPhoto)),
         );
       } else if (response.statusCode == HttpStatus.forbidden) {
         setState(() {
